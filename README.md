@@ -158,6 +158,14 @@ Vercel's `x-vercel-ip-country`). The source is `utm_source` if given, else
 the referrer host without `www.`; internal and preview referrers are
 ignored. Pure helpers live in `lib/analytics.ts`.
 
+Visitor IPs are never stored, only `hashIp` (`lib/ktv/rate-limit.ts`),
+which the stats, the admin login lockout, the contact form and Street KTV
+quotas share. Set `IP_HASH_SALT` (any long random string) to key it with
+HMAC-SHA256; without it the hash is a plain SHA-256, which anyone holding
+the data could reverse by hashing every IPv4 address. Setting or changing
+the salt changes every hash once: that day's unique visitors count returning
+people twice, and running per-IP limits start over.
+
 `lib/event-log.ts` `logEvent(type, detail?)` appends to the Redis list
 `log:events` (newest 1000). Logged today: `contact.message`, `admin.login`,
 `admin.login_failed`.

@@ -1,13 +1,15 @@
-import { createHash } from "node:crypto";
+import { createHash, createHmac } from "node:crypto";
 
 /**
- * SHA-256 of the IP, truncated to 16 hex chars. Stored on each QueueItem
- * as `ipHash` so the per-IP "max N rows in queue" anti-spam quota in
- * `app/api/ktv/queue/route.ts` can recognise repeat submitters without
- * the server ever knowing the real IP.
+ * The IP hashed to 16 hex chars, so anti-spam quotas, login lockouts and
+ * the unique-visitor count can recognise a repeat visitor without the
+ * server keeping the real IP. Keyed with `IP_HASH_SALT` (HMAC-SHA256) when
+ * set: a plain SHA-256 of an IPv4 address can be reversed by trying all
+ * 2³² of them, a keyed one cannot without the key.
  */
-export function hashIp(ip: string): string {
-  return createHash("sha256").update(ip).digest("hex").slice(0, 16);
+export function hashIp(ip: string, salt: string | undefined = process.env.IP_HASH_SALT): string {
+  const digest = salt ? createHmac("sha256", salt).update(ip) : createHash("sha256").update(ip);
+  return digest.digest("hex").slice(0, 16);
 }
 
 /** Pull the best-effort client IP from common Vercel / proxy headers. */
