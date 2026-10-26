@@ -37,6 +37,7 @@ DOCKER=1 ./scripts/deploy.sh       # Docker → Cloud Run / Fly.io
 - `data/projects.json` — generated project snapshot (do not edit; see below)
 - `lib/projects.ts` — loads the snapshot, groups and sorts by track
 - `lib/analytics.ts`, `lib/admin-auth.ts`, `lib/event-log.ts` — admin dashboard
+- `lib/files/`, `scripts/upload.ts` — shared files in R2 (`/downloads`, `/admin/files`)
 - `scripts/fetch-projects.ts` — the generator
 - `Dockerfile` — multi-stage build for self-host
 
@@ -168,7 +169,96 @@ people twice, and running per-IP limits start over.
 
 `lib/event-log.ts` `logEvent(type, detail?)` appends to the Redis list
 `log:events` (newest 1000). Logged today: `contact.message`, `admin.login`,
-`admin.login_failed`.
+`admin.login_failed`, and the `files.*` events below.
+
+## Shared files (`/downloads`)
+
+Large files (datasets, models, installers: anything too big for a repo)
+live in a **private Cloudflare R2 bucket**. Nothing is listed publicly:
+each collection has an unguessable 16-character id, and only people (or
+apps) holding its link can see it. Bytes never pass through Vercel, so
+there is no 4.5 MB request limit and downloads cost no Vercel bandwidth
+(R2 egress is free).
+
+```mermaid
+flowchart LR
+  A[admin page / app / CLI] -- "1. start, sign parts" --> S[site /api/files]
+  A -- "2. PUT parts (signed URLs)" --> R[(R2 bucket)]
+  A -- "3. complete" --> S
+  V[visitor] -- "/downloads/&lt;id&gt;" --> S
+  V -- "/dl/&lt;file&gt; → 302 signed URL" --> R
+  S -- records, counts --> K[(Redis)]
+```
+
+**Set up once**
+
+1. Cloudflare → R2 → create bucket `puddings-files` (leave public access off).
+2. R2 → Manage API tokens → create one with *Object Read & Write* on that
+   bucket only.
+3. Bucket → Settings → CORS policy (lets the admin page PUT parts and read
+   their ETag):
+   ```json
+   [{ "AllowedOrigins": ["https://puddings-world.com", "http://localhost:3000"],
+      "AllowedMethods": ["PUT"], "AllowedHeaders": ["*"],
+      "ExposeHeaders": ["ETag"], "MaxAgeSeconds": 3600 }]
+   ```
+4. Vercel env (Production): `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`,
+   `R2_SECRET_ACCESS_KEY`, optionally `R2_BUCKET` (default `puddings-files`).
+   Redeploy. Until then `/admin/files` shows these steps and the APIs answer 503.
+
+**Use it**
+
+- `/admin/files` (signed in): create a collection, drop files on it,
+  *copy share link* → `https://puddings-world.com/downloads/<id>`. Uploads
+  go in parts (16 MiB or more, 4 at a time, each retried 4 times); if one
+  stops, pick the same file again and it resumes from the parts R2 already
+  has (progress kept in the browser's localStorage). Unfinished uploads are
+  marked and can be deleted; R2 also drops abandoned multipart parts after
+  7 days.
+- `/downloads/<id>`: link holders tick the files they want, then
+  *download* (one after another) or *copy links* for a download manager.
+  Each file shows its size, note and SHA-256 when the uploader sent one.
+  The page is `noindex`; `/downloads` itself only explains that files are
+  shared by link.
+- `/dl/<fileId>`: counts the download (bots excluded) and redirects to an
+  R2 URL signed for 10 minutes, saving under the original name (non-ASCII
+  names included).
+- **Apps and scripts**: create an app token at `/admin/files`, scoped to some
+  collections or all; the secret (`pwf_…`) is shown once and only its
+  SHA-256 is stored. Revoking takes effect at once.
+
+  ```sh
+  PW_FILES_TOKEN=pwf_… npx tsx scripts/upload.ts --collection <id> [--note "…"] [--site URL] [--no-hash] build/app.zip data/*.tar
+  # app.zip (812.4 MB)
+  #   done  sha256 9f86d0…
+  # Share: https://puddings-world.com/downloads/<id>
+  ```
+
+  It hashes each file (skip with `--no-hash`), uploads it in parts, and
+  resumes an interrupted file when run again (state under the OS temp dir).
+  Defaults: `--site` from `PW_SITE`, else `https://puddings-world.com`.
+
+**API** (JSON; admin = `/admin` session cookie, app = `Authorization: Bearer pwf_…`)
+
+| Method & path | Who | Does |
+|---|---|---|
+| `GET /api/files/collections` | admin | All collections with every file and download count |
+| `POST /api/files/collections` `{title, note?}` | admin | Create a collection |
+| `GET /api/files/collections/<id>` | link holder | Collection and its finished files |
+| `DELETE /api/files/collections/<id>` | admin | Delete it and its files in R2 |
+| `DELETE /api/files/files/<id>` | admin | Delete one file / abandon its upload |
+| `POST /api/files/uploads` `{collectionId, name, size, type?, sha256?, note?}` | admin, app in scope | Start → `{fileId, partSize, partCount}` |
+| `POST /api/files/uploads/<id>/parts` `{parts:[n…]}` | same | Up to 100 signed PUT URLs, valid 1 h |
+| `POST /api/files/uploads/<id>/complete` `{parts:[{part, etag}]}` | same | Stitch parts; checks the stored size |
+| `GET/POST /api/files/tokens`, `DELETE /api/files/tokens/<id>` | admin | List, issue, revoke app tokens |
+| `GET /dl/<fileId>` | link holder | Count and redirect to a signed download |
+
+Limits: 200 GiB per file, names cleaned of paths and characters Windows
+refuses. Code: `lib/files/` (`model.ts` pure rules, `upload-client.ts` the
+uploader shared by browser and CLI, `r2.ts` S3 signing via `aws4fetch`,
+`store.ts` Redis records, `secrets.ts` ids and token hashes). Events:
+`files.collection_created`, `files.collection_deleted`, `files.uploaded`,
+`files.deleted`, `files.token_created`, `files.token_revoked`.
 
 ## Projects: discovered from GitHub
 

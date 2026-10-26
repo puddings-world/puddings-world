@@ -87,6 +87,12 @@ export default async function AdminPage({
               {r}d
             </Link>
           ))}
+          <Link
+            href="/admin/files"
+            className="ml-2 rounded border border-bg-border px-2 py-1 text-ink-muted hover:text-ink-primary"
+          >
+            files
+          </Link>
           <form action="/api/admin/logout" method="post">
             <button className="ml-2 rounded border border-bg-border px-2 py-1 text-ink-muted hover:text-ink-primary">
               sign out
