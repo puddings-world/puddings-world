@@ -1,36 +1,6 @@
 {
-  "fetchedAt": "2026-10-24T04:49:08.548Z",
+  "fetchedAt": "2026-10-26T04:49:09.568Z",
   "projects": [
-    {
-      "slug": "mapetite",
-      "title": "mapetite",
-      "tagline": "Browser extension that curates food places on top of Google Maps, synced two-way with Google saved lists.",
-      "track": "side",
-      "status": "active",
-      "repo": {
-        "owner": "puddings-world",
-        "name": "mapetite",
-        "private": true
-      },
-      "topics": [
-        "product"
-      ],
-      "links": [],
-      "featured": false,
-      "activity": {
-        "stars": 0,
-        "openIssues": 0,
-        "defaultBranch": "main",
-        "pushedAt": "2026-10-24T02:59:35Z",
-        "weeklyCommits": 42,
-        "latestCommit": {
-          "sha": "808edfc",
-          "message": "Keep untrusted text out of shells and other windows out of lane frames",
-          "date": "2026-10-24T02:59:33Z",
-          "url": "https://github.com/puddings-world/mapetite/commit/808edfcfa0223815541cd15d21b2afa51e95dca8"
-        }
-      }
-    },
     {
       "slug": "paperfact",
       "title": "Paperfact",
@@ -53,16 +23,76 @@
         "stars": 0,
         "openIssues": 0,
         "defaultBranch": "master",
-        "pushedAt": "2026-10-23T18:23:28Z",
-        "weeklyCommits": 7,
+        "pushedAt": "2026-10-24T10:38:41Z",
+        "weeklyCommits": 10,
         "latestCommit": {
-          "sha": "3f4552f",
-          "message": "Release v0.2.0 with research planning, PDF downloads and shared progress",
-          "date": "2026-10-23T18:23:05Z",
-          "url": "https://github.com/puddings-world/Paperfact/commit/3f4552fd656035c68c5434a318e617413774cfd6"
+          "sha": "04f086f",
+          "message": "Refresh lists after committed changes from all local writers",
+          "date": "2026-10-24T10:38:25Z",
+          "url": "https://github.com/puddings-world/Paperfact/commit/04f086f45424a9ee5078d31c14cad4d73e350ab2"
         }
       },
       "pinned": 5
+    },
+    {
+      "slug": "reprise-studio",
+      "title": "reprise-studio",
+      "tagline": "Where covers become light — an abstract lyric MV production kit.",
+      "track": "tool",
+      "status": "active",
+      "repo": {
+        "owner": "puddings-world",
+        "name": "reprise-studio",
+        "private": false
+      },
+      "topics": [
+        "music"
+      ],
+      "links": [],
+      "featured": false,
+      "activity": {
+        "stars": 0,
+        "openIssues": 0,
+        "defaultBranch": "main",
+        "pushedAt": "2026-10-24T10:22:00Z",
+        "weeklyCommits": 2,
+        "latestCommit": {
+          "sha": "7991232",
+          "message": "videogen: semi-automatic cover-song anime MV pipeline",
+          "date": "2026-10-24T07:49:32Z",
+          "url": "https://github.com/puddings-world/reprise-studio/commit/7991232b5a2901de02d01eff234ce7bd8bc9fc86"
+        }
+      }
+    },
+    {
+      "slug": "mapetite",
+      "title": "mapetite",
+      "tagline": "Browser extension that curates food places on top of Google Maps, synced two-way with Google saved lists.",
+      "track": "side",
+      "status": "active",
+      "repo": {
+        "owner": "puddings-world",
+        "name": "mapetite",
+        "private": true
+      },
+      "topics": [
+        "product"
+      ],
+      "links": [],
+      "featured": false,
+      "activity": {
+        "stars": 0,
+        "openIssues": 0,
+        "defaultBranch": "main",
+        "pushedAt": "2026-10-24T02:59:35Z",
+        "weeklyCommits": 8,
+        "latestCommit": {
+          "sha": "808edfc",
+          "message": "Keep untrusted text out of shells and other windows out of lane frames",
+          "date": "2026-10-24T02:59:33Z",
+          "url": "https://github.com/puddings-world/mapetite/commit/808edfcfa0223815541cd15d21b2afa51e95dca8"
+        }
+      }
     },
     {
       "slug": "virtual-embryo-challenge",
@@ -304,36 +334,6 @@
         }
       },
       "pinned": 1
-    },
-    {
-      "slug": "reprise-studio",
-      "title": "reprise-studio",
-      "tagline": "Where covers become light — an abstract lyric MV production kit.",
-      "track": "tool",
-      "status": "paused",
-      "repo": {
-        "owner": "puddings-world",
-        "name": "reprise-studio",
-        "private": false
-      },
-      "topics": [
-        "music"
-      ],
-      "links": [],
-      "featured": false,
-      "activity": {
-        "stars": 0,
-        "openIssues": 0,
-        "defaultBranch": "main",
-        "pushedAt": "2026-05-02T01:59:19Z",
-        "weeklyCommits": 0,
-        "latestCommit": {
-          "sha": "2395d97",
-          "message": "Fix TimeScrubber swallowing shortcut keys when slider has focus",
-          "date": "2026-05-02T01:59:23Z",
-          "url": "https://github.com/puddings-world/reprise-studio/commit/2395d97cb7ff7a7f0309008130f21f30f578a542"
-        }
-      }
     },
     {
       "slug": "sadroid",
