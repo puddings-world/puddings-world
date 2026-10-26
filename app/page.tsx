@@ -25,6 +25,15 @@ export default function HomePage() {
         <h1 className="mt-6 max-w-3xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
           Pudding builds the world.
         </h1>
+        <p className="mt-4 max-w-3xl font-serif text-xl italic text-ink-secondary sm:text-2xl">
+          Diving into the digital world —{" "}
+          <Link
+            href="/musings"
+            className="text-accent-amber decoration-accent-amber/40 underline-offset-4 transition-colors hover:underline"
+          >
+            surfacing with songs and sayings.
+          </Link>
+        </p>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-secondary">
           I build things — biosignal AI, surgical vision, audio tools, Android
           utilities, the occasional side quest. Some become products, some
