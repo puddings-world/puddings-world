@@ -31,7 +31,7 @@ export default function HomePage() {
             href="/musings"
             className="text-accent-amber decoration-accent-amber/40 underline-offset-4 transition-colors hover:underline"
           >
-            surfacing with songs and sayings.
+            coming up for air in songs and sayings.
           </Link>
         </p>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-secondary">
