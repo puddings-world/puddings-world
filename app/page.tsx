@@ -15,10 +15,6 @@ export default function HomePage() {
   return (
     <main className="mx-auto w-full max-w-6xl px-4 sm:px-6">
       <section className="pt-16 pb-12 sm:pt-24 sm:pb-16">
-        <div className="mb-10 inline-flex items-center gap-2 rounded-md border border-accent-amber/40 bg-accent-amber/10 px-3 py-1.5 font-mono text-xs text-accent-amber">
-          <span aria-hidden>🛠</span>
-          <span>in active iteration — content shifts week to week</span>
-        </div>
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
           puddingsworld
         </p>
@@ -34,14 +30,27 @@ export default function HomePage() {
             coming up for air in songs and sayings.
           </Link>
         </p>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-secondary">
-          I build things — biosignal AI, surgical vision, audio tools, Android
-          utilities, the occasional side quest. Some become products, some
-          become papers, some stay weird.
+        <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ink-secondary">
+          I&apos;m GeniusPudding. By day I do large-model research and
+          infrastructure at an AI-chip company. Around that I build{" "}
+          <span className="text-ink-primary">agentic apps and terminal tools</span>,
+          along with biosignal AI, surgical vision, audio tools and games.
         </p>
-        <p className="mt-3 max-w-2xl text-base leading-relaxed text-ink-secondary">
-          {now.items.length} things in flight this week. Some are open source,
-          some are commissioned, some are scratching personal itches.
+        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-secondary">
+          The long game:{" "}
+          <span className="text-ink-primary">
+            a digital world where everything flows, and a bag of tricks for
+            every kind of problem.
+          </span>{" "}
+          This site keeps both halves —{" "}
+          <Link href="/projects" className="text-accent hover:underline">
+            the projects
+          </Link>{" "}
+          and{" "}
+          <Link href="/musings" className="text-accent-amber hover:underline">
+            the musings
+          </Link>
+          .
         </p>
       </section>
 
