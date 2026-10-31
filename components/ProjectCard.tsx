@@ -11,7 +11,7 @@ export function ProjectCard({ project }: { project: Project }) {
   const current = project.progress?.find((m) => m.status === "doing");
 
   return (
-    <article className="group relative flex min-w-0 flex-col overflow-hidden rounded-xl border border-bg-border bg-bg-panel transition-colors hover:border-ink-muted has-[a.card-link:focus-visible]:border-accent">
+    <article className="group relative flex min-w-0 flex-col overflow-hidden rounded-xl border border-bg-border bg-bg-panel has-[a.card-link:focus-visible]:border-accent lift">
       {project.image && (
         <div className="relative aspect-video border-b border-bg-border bg-bg-raised">
           <Image
@@ -19,7 +19,7 @@ export function ProjectCard({ project }: { project: Project }) {
             alt=""
             fill
             unoptimized
-            className="object-cover object-top"
+            className="lift-media object-cover object-top"
             sizes="(min-width: 768px) 50vw, 100vw"
           />
         </div>

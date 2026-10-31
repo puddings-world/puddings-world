@@ -16,8 +16,8 @@ export default async function MusingsPage() {
 
   return (
     <main className="w-full py-16">
-      <div className="mx-auto w-full max-w-3xl px-6">
-        <header className="mb-14 text-center sm:text-left">
+      <div className="page [--col:48rem]">
+        <header className="enter mb-14">
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
             musings
           </p>
@@ -37,8 +37,8 @@ export default async function MusingsPage() {
           <div className="mx-auto w-full max-w-6xl px-2 sm:px-6">
             <MusingsCarousel musings={musings} />
           </div>
-          <div className="mx-auto w-full max-w-3xl px-6">
-            <p className="mt-12 text-center font-mono text-xs text-ink-muted">
+          <div className="page [--col:48rem]">
+            <p className="mt-12 font-mono text-xs text-ink-muted">
               {musings.length} piece{musings.length === 1 ? "" : "s"} · newest first
             </p>
           </div>
@@ -47,7 +47,7 @@ export default async function MusingsPage() {
 
       {sayings.length > 0 && (
         <section className="mt-20 w-full">
-          <h2 className="mx-auto w-full max-w-5xl px-6 font-mono text-xs uppercase tracking-[0.25em] text-accent">
+          <h2 className="page [--col:48rem] font-mono text-xs uppercase tracking-[0.25em] text-accent">
             sayings
           </h2>
           <div className="mt-6">

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function DownloadsPage() {
   return (
-    <main className="mx-auto w-full max-w-2xl px-6 py-20">
+    <main className="page py-20 [--col:42rem]">
       <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">downloads</p>
       <h1 className="mt-4 text-3xl font-semibold tracking-tight">Shared by link.</h1>
       <p className="mt-6 text-base leading-relaxed text-ink-secondary">

@@ -29,8 +29,8 @@ const PULLS = [
 
 export default function AboutPage() {
   return (
-    <main className="mx-auto w-full max-w-3xl px-6 py-16">
-      <header>
+    <main className="page py-16 [--col:48rem]">
+      <header className="enter">
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
           about
         </p>
@@ -49,7 +49,7 @@ export default function AboutPage() {
         </p>
       </header>
 
-      <section className="mt-12 rounded-xl border border-bg-border bg-bg-panel p-6 sm:p-8">
+      <section className="reveal mt-12 rounded-xl border border-bg-border bg-bg-panel p-6 sm:p-8">
         <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-ink-muted">
           Background
         </h2>
@@ -70,7 +70,7 @@ export default function AboutPage() {
         </ul>
       </section>
 
-      <section className="mt-8 rounded-xl border border-bg-border bg-bg-panel p-6 sm:p-8">
+      <section className="reveal mt-8 rounded-xl border border-bg-border bg-bg-panel p-6 sm:p-8">
         <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-ink-muted">
           What keeps pulling me back
         </h2>
@@ -86,7 +86,7 @@ export default function AboutPage() {
         </ul>
       </section>
 
-      <section className="mt-12 rounded-xl border border-accent/30 bg-accent/5 p-6 sm:p-8">
+      <section className="reveal mt-12 rounded-xl border border-accent/30 bg-accent/5 p-6 sm:p-8">
         <h2 className="text-base font-semibold tracking-tight">
           Where to go next
         </h2>

@@ -12,8 +12,8 @@ const CONTACT = {
 
 export default function ContactPage() {
   return (
-    <main className="mx-auto w-full max-w-2xl px-6 py-16">
-      <header>
+    <main className="page py-16 [--col:42rem]">
+      <header className="enter">
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
           contact
         </p>

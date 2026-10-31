@@ -51,7 +51,7 @@ export default async function ProjectDetailPage({
   const href = repoUrl(project);
 
   return (
-    <main className="mx-auto w-full max-w-4xl px-4 py-12 sm:px-6">
+    <main className="page py-12 [--col:56rem]">
       <Link
         href="/projects"
         className="font-mono text-xs text-ink-muted transition-colors hover:text-accent"
@@ -59,7 +59,7 @@ export default async function ProjectDetailPage({
         ← projects
       </Link>
 
-      <header className="mt-6">
+      <header className="enter mt-6">
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
           {TRACKS[project.track].title}
         </p>

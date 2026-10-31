@@ -64,7 +64,7 @@ const WEEKS = [
 
 export default function ToeflTrainerPage() {
   return (
-    <main className="mx-auto w-full max-w-4xl px-6 py-16">
+    <main className="page py-16 [--col:56rem]">
       <header>
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
           services · personal tool

@@ -3,7 +3,7 @@ import { ProjectCard } from "./ProjectCard";
 
 export function TrackSection({ track }: { track: Track }) {
   return (
-    <section aria-labelledby={`track-${track.slug}`}>
+    <section className="reveal" aria-labelledby={`track-${track.slug}`}>
       <div className="mb-6 flex items-baseline justify-between border-b border-bg-border pb-3">
         <h2 id={`track-${track.slug}`} className="text-xl font-semibold tracking-tight">
           {track.title}

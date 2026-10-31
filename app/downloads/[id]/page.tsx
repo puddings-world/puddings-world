@@ -21,7 +21,7 @@ export default async function CollectionPage({ params }: { params: Promise<{ id:
   const files = (await listFiles(redis, id)).filter((f) => f.status === "ready").map(publicFile);
 
   return (
-    <main className="mx-auto w-full max-w-3xl px-4 py-14 sm:px-6">
+    <main className="page py-14 [--col:48rem]">
       <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">shared files</p>
       <h1 className="mt-4 break-words text-3xl font-semibold tracking-tight sm:text-4xl">{collection.title}</h1>
       {collection.note && (

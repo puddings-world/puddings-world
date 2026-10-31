@@ -48,7 +48,7 @@ export default async function MusingDetailPage({
   const next = idx < ordered.length - 1 ? ordered[idx + 1] : null;
 
   return (
-    <main className="relative mx-auto w-full max-w-2xl px-6 py-16">
+    <main className="page relative py-16 [--col:42rem]">
       <MusingLanding />
       {m.type === "lyrics" && m.title && (
         <span

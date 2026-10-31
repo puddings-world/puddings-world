@@ -7,7 +7,7 @@ type Props = {
 
 export function Header({ totalProjects, live, shipped, lastFetched }: Props) {
   return (
-    <header>
+    <header className="enter">
       <h1 className="text-3xl font-semibold tracking-tight">Projects &amp; Research</h1>
       <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-secondary">
         A running tab of what I&apos;m building, grouped by research, tools,

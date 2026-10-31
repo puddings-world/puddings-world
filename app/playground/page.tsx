@@ -57,8 +57,8 @@ const ITEMS: Item[] = [
 
 export default function PlaygroundPage() {
   return (
-    <main className="mx-auto w-full max-w-3xl px-6 py-16">
-      <header>
+    <main className="page py-16 [--col:48rem]">
+      <header className="enter">
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
           playground
         </p>
@@ -82,7 +82,7 @@ export default function PlaygroundPage() {
             <li key={i}>
               <Wrapper
                 {...(wrapperProps as { href: string })}
-                className="group flex items-start gap-4 rounded-xl border border-bg-border bg-bg-panel p-5 transition-colors hover:border-ink-muted"
+                className="lift group flex items-start gap-4 rounded-xl border border-bg-border bg-bg-panel p-5"
               >
                 <span
                   className={`shrink-0 rounded-md border px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider ${TAG_STYLE[item.tag]}`}

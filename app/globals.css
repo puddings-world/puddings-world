@@ -20,6 +20,28 @@
     "Noto Serif TC", "Microsoft JhengHei", ui-serif, Georgia, serif;
 }
 
+/* ---------- Motion tokens: one rhythm for every hover and entrance ---------- */
+:root {
+  --dur-instant: 100ms;
+  --dur-fast: 180ms;
+  --dur-base: 280ms;
+  --dur-slow: 450ms;
+  --dur-reveal: 700ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in: cubic-bezier(0.55, 0, 1, 0.45);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --stagger: 70ms;
+  --rise: 14px;
+  /* Matches the nav: max-w-6xl with px-4 / sm:px-6. */
+  --site-max: 72rem;
+  --gutter: 1rem;
+}
+@media (min-width: 640px) {
+  :root {
+    --gutter: 1.5rem;
+  }
+}
+
 html,
 body {
   background: var(--color-bg-base);
@@ -163,11 +185,11 @@ body {
 ::view-transition-group(musing-title),
 ::view-transition-group(musing-disc) {
   animation-duration: 0.6s;
-  animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+  animation-timing-function: var(--ease-out);
 }
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation-duration: 0.35s;
+  animation-duration: var(--dur-base);
 }
 @keyframes stanza-in {
   from {
@@ -182,11 +204,144 @@ body {
   }
 }
 .stanza-in {
-  animation: stanza-in 0.9s ease-out both;
+  animation: stanza-in 0.9s var(--ease-out) both;
 }
 @media (prefers-reduced-motion: reduce) {
   .stanza-in,
   .lyric-disc[data-spinning] {
     animation: none;
+  }
+}
+
+/* ---------- Page column: every page starts on the nav's left edge ---------- */
+.page {
+  --col: 48rem;
+  width: 100%;
+  max-width: calc(var(--col) + 2 * var(--gutter));
+  margin-left: max(0px, calc((100% - var(--site-max)) / 2));
+  margin-right: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ---------- Interaction states ---------- */
+:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+:where(button, .press):not(:disabled):active {
+  transform: scale(0.97);
+}
+:where(button, .press) {
+  transition:
+    transform var(--dur-instant) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+/* Nav: an underline grows on hover and stays under the current page. */
+.nav-link {
+  position: relative;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -6px 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+.nav-link[aria-current="page"] {
+  color: var(--color-ink-primary);
+}
+.nav-link[aria-current="page"]::after {
+  background: var(--color-accent);
+  transform: scaleX(1);
+}
+
+/* Cards lift a little and their border warms toward the accent. */
+.lift {
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+.lift:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--color-accent) 35%, var(--color-bg-border));
+  box-shadow: 0 18px 40px -28px color-mix(in srgb, var(--color-accent) 45%, transparent);
+}
+.lift .lift-media {
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+.lift:hover .lift-media {
+  transform: scale(1.02);
+}
+
+/* ---------- Entrances ---------- */
+/* A page's first blocks rise in once per navigation, staggered. */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--rise));
+  }
+}
+.enter > * {
+  animation: rise-in var(--dur-reveal) var(--ease-out) both;
+}
+.enter > :nth-child(2) {
+  animation-delay: calc(var(--stagger) * 1);
+}
+.enter > :nth-child(3) {
+  animation-delay: calc(var(--stagger) * 2);
+}
+.enter > :nth-child(4) {
+  animation-delay: calc(var(--stagger) * 3);
+}
+.enter > :nth-child(n + 5) {
+  animation-delay: calc(var(--stagger) * 4);
+}
+
+/* Blocks further down rise as they scroll into view, where supported. */
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation: rise-in linear both;
+    animation-timeline: view();
+    animation-range: entry 5% entry 85%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .enter > *,
+  .reveal {
+    animation: none;
+  }
+  .lift:hover,
+  .lift:hover .lift-media,
+  :where(button, .press):not(:disabled):active {
+    transform: none;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/* Phone nav: one line that scrolls sideways, fading at the edge. */
+@media (max-width: 639px) {
+  .nav-scroll {
+    scrollbar-width: none;
+    mask-image: linear-gradient(to right, #000 85%, transparent);
+  }
+  .nav-scroll::-webkit-scrollbar {
+    display: none;
   }
 }

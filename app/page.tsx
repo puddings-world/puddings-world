@@ -14,7 +14,7 @@ export default function HomePage() {
 
   return (
     <main className="mx-auto w-full max-w-6xl px-4 sm:px-6">
-      <section className="pt-16 pb-12 sm:pt-24 sm:pb-16">
+      <section className="enter pt-16 pb-12 sm:pt-24 sm:pb-16">
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
           puddingsworld
         </p>
@@ -54,7 +54,7 @@ export default function HomePage() {
         </p>
       </section>
 
-      <section className="border-t border-bg-border pt-12 pb-16">
+      <section className="reveal border-t border-bg-border pt-12 pb-16">
         <div className="mb-6 flex items-baseline justify-between">
           <h2 className="text-xl font-semibold tracking-tight">Now building</h2>
           <span className="font-mono text-xs text-ink-muted">
@@ -91,7 +91,7 @@ export default function HomePage() {
       </section>
 
 
-      <section className="border-t border-bg-border pt-12 pb-20">
+      <section className="reveal border-t border-bg-border pt-12 pb-20">
         <div className="mx-auto max-w-2xl text-center sm:text-left">
           <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
             get in touch

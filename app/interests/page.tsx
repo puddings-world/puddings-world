@@ -10,8 +10,8 @@ export default function InterestsPage() {
   const filled = interests.filter((s) => s.items.length > 0);
   const compact = interests.filter((s) => s.items.length === 0);
   return (
-    <main className="mx-auto w-full max-w-3xl px-6 py-16">
-      <header>
+    <main className="page py-16 [--col:48rem]">
+      <header className="enter">
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
           interests
         </p>
@@ -74,7 +74,7 @@ export default function InterestsPage() {
 
 function Section({ section }: { section: InterestSection }) {
   return (
-    <section className="rounded-xl border border-bg-border bg-bg-panel p-6 sm:p-7">
+    <section className="reveal rounded-xl border border-bg-border bg-bg-panel p-6 sm:p-7">
       <header className="flex items-baseline justify-between gap-3">
         <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-ink-primary">
           {section.label}

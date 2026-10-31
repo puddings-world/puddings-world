@@ -49,8 +49,8 @@ const SERVICES = [
 
 export default function ServicesPage() {
   return (
-    <main className="mx-auto w-full max-w-4xl px-6 py-16">
-      <header>
+    <main className="page py-16 [--col:56rem]">
+      <header className="enter">
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
           services
         </p>
