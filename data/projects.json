@@ -1,6 +1,36 @@
 {
-  "fetchedAt": "2026-10-26T04:49:09.568Z",
+  "fetchedAt": "2026-11-02T06:06:48.964Z",
   "projects": [
+    {
+      "slug": "reprise-studio",
+      "title": "reprise-studio",
+      "tagline": "Where covers become light — an abstract lyric MV production kit.",
+      "track": "tool",
+      "status": "active",
+      "repo": {
+        "owner": "GeniusPudding",
+        "name": "reprise-studio",
+        "private": true
+      },
+      "topics": [
+        "music"
+      ],
+      "links": [],
+      "featured": false,
+      "activity": {
+        "stars": 0,
+        "openIssues": 0,
+        "defaultBranch": "main",
+        "pushedAt": "2026-11-02T05:27:18Z",
+        "weeklyCommits": 4,
+        "latestCommit": {
+          "sha": "d1bce77",
+          "message": "docs: fetch recording kits from the dataset LAN server",
+          "date": "2026-11-02T05:27:15Z",
+          "url": "https://github.com/GeniusPudding/reprise-studio/commit/d1bce77f63ca1dbe7c98711513fdaa41ed2efd4a"
+        }
+      }
+    },
     {
       "slug": "paperfact",
       "title": "Paperfact",
@@ -23,46 +53,16 @@
         "stars": 0,
         "openIssues": 0,
         "defaultBranch": "master",
-        "pushedAt": "2026-10-24T10:38:41Z",
-        "weeklyCommits": 10,
+        "pushedAt": "2026-11-01T03:22:20Z",
+        "weeklyCommits": 26,
         "latestCommit": {
-          "sha": "04f086f",
-          "message": "Refresh lists after committed changes from all local writers",
-          "date": "2026-10-24T10:38:25Z",
-          "url": "https://github.com/puddings-world/Paperfact/commit/04f086f45424a9ee5078d31c14cad4d73e350ab2"
+          "sha": "1b44466",
+          "message": "Say that Claude sign-in stays each person's own subscription",
+          "date": "2026-10-31T09:56:03Z",
+          "url": "https://github.com/puddings-world/Paperfact/commit/1b44466a2aaf5a3ea17a3eba16f27777f0507a36"
         }
       },
       "pinned": 5
-    },
-    {
-      "slug": "reprise-studio",
-      "title": "reprise-studio",
-      "tagline": "Where covers become light — an abstract lyric MV production kit.",
-      "track": "tool",
-      "status": "active",
-      "repo": {
-        "owner": "puddings-world",
-        "name": "reprise-studio",
-        "private": false
-      },
-      "topics": [
-        "music"
-      ],
-      "links": [],
-      "featured": false,
-      "activity": {
-        "stars": 0,
-        "openIssues": 0,
-        "defaultBranch": "main",
-        "pushedAt": "2026-10-24T10:22:00Z",
-        "weeklyCommits": 2,
-        "latestCommit": {
-          "sha": "7991232",
-          "message": "videogen: semi-automatic cover-song anime MV pipeline",
-          "date": "2026-10-24T07:49:32Z",
-          "url": "https://github.com/puddings-world/reprise-studio/commit/7991232b5a2901de02d01eff234ce7bd8bc9fc86"
-        }
-      }
     },
     {
       "slug": "mapetite",
@@ -84,15 +84,46 @@
         "stars": 0,
         "openIssues": 0,
         "defaultBranch": "main",
-        "pushedAt": "2026-10-24T02:59:35Z",
-        "weeklyCommits": 8,
+        "pushedAt": "2026-11-01T02:51:18Z",
+        "weeklyCommits": 23,
         "latestCommit": {
-          "sha": "808edfc",
-          "message": "Keep untrusted text out of shells and other windows out of lane frames",
-          "date": "2026-10-24T02:59:33Z",
-          "url": "https://github.com/puddings-world/mapetite/commit/808edfcfa0223815541cd15d21b2afa51e95dca8"
+          "sha": "f01dac2",
+          "message": "A restore merges with what the store holds under the same key, never over it",
+          "date": "2026-11-01T02:51:16Z",
+          "url": "https://github.com/puddings-world/mapetite/commit/f01dac26b349923861be46e4196204ecc6afc555"
         }
       }
+    },
+    {
+      "slug": "kaikou-claude",
+      "title": "Kaikou-Claude",
+      "tagline": "Use Chinese voice input to use claude-code (開口即克)",
+      "track": "tool",
+      "status": "active",
+      "repo": {
+        "owner": "puddings-world",
+        "name": "Kaikou-Claude",
+        "private": false
+      },
+      "topics": [
+        "claude-code"
+      ],
+      "links": [],
+      "featured": false,
+      "activity": {
+        "stars": 4,
+        "openIssues": 0,
+        "defaultBranch": "main",
+        "pushedAt": "2026-10-27T01:17:36Z",
+        "weeklyCommits": 1,
+        "latestCommit": {
+          "sha": "84c4309",
+          "message": "macOS: right-Cmd hold-to-talk, strict target gate, never steal focus",
+          "date": "2026-10-27T01:17:33Z",
+          "url": "https://github.com/puddings-world/Kaikou-Claude/commit/84c430911cc897261361d389ac71ad418cf17ea1"
+        }
+      },
+      "pinned": 0
     },
     {
       "slug": "virtual-embryo-challenge",
@@ -113,7 +144,7 @@
         "openIssues": 0,
         "defaultBranch": "main",
         "pushedAt": "2026-10-20T05:14:37Z",
-        "weeklyCommits": 1,
+        "weeklyCommits": 0,
         "latestCommit": {
           "sha": "83f4bf7",
           "message": "Add vec flow: OT developmental flow as a shared T1/T2/T3 backbone",
@@ -151,37 +182,6 @@
           "url": "https://github.com/puddings-world/cataract-vision-lab/commit/65e4e6c8805b3e2ada41e960bdab9d08725dd705"
         }
       }
-    },
-    {
-      "slug": "kaikou-claude",
-      "title": "Kaikou-Claude",
-      "tagline": "Use Chinese voice input to use claude-code (開口即克)",
-      "track": "tool",
-      "status": "paused",
-      "repo": {
-        "owner": "puddings-world",
-        "name": "Kaikou-Claude",
-        "private": false
-      },
-      "topics": [
-        "claude-code"
-      ],
-      "links": [],
-      "featured": false,
-      "activity": {
-        "stars": 4,
-        "openIssues": 0,
-        "defaultBranch": "main",
-        "pushedAt": "2026-07-06T10:17:22Z",
-        "weeklyCommits": 0,
-        "latestCommit": {
-          "sha": "dc964bc",
-          "message": "Fix setup robustness: correct venv timing and improve dependency diagnostics",
-          "date": "2026-05-10T11:11:06Z",
-          "url": "https://github.com/puddings-world/Kaikou-Claude/commit/dc964bc7145a96bfb80a9dc3a758536a5566cdc7"
-        }
-      },
-      "pinned": 0
     },
     {
       "slug": "streetperformermaster",
@@ -562,7 +562,7 @@
         "openIssues": 0,
         "defaultBranch": "main",
         "pushedAt": "2026-10-24T03:26:59Z",
-        "weeklyCommits": 7,
+        "weeklyCommits": 0,
         "latestCommit": {
           "sha": "91cf542",
           "message": "Add PTS-aligned review workstation and verified cloud batch workflows",
