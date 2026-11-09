@@ -1,36 +1,6 @@
 {
-  "fetchedAt": "2026-11-02T06:06:48.964Z",
+  "fetchedAt": "2026-11-09T06:32:42.977Z",
   "projects": [
-    {
-      "slug": "reprise-studio",
-      "title": "reprise-studio",
-      "tagline": "Where covers become light — an abstract lyric MV production kit.",
-      "track": "tool",
-      "status": "active",
-      "repo": {
-        "owner": "GeniusPudding",
-        "name": "reprise-studio",
-        "private": true
-      },
-      "topics": [
-        "music"
-      ],
-      "links": [],
-      "featured": false,
-      "activity": {
-        "stars": 0,
-        "openIssues": 0,
-        "defaultBranch": "main",
-        "pushedAt": "2026-11-02T05:27:18Z",
-        "weeklyCommits": 4,
-        "latestCommit": {
-          "sha": "d1bce77",
-          "message": "docs: fetch recording kits from the dataset LAN server",
-          "date": "2026-11-02T05:27:15Z",
-          "url": "https://github.com/GeniusPudding/reprise-studio/commit/d1bce77f63ca1dbe7c98711513fdaa41ed2efd4a"
-        }
-      }
-    },
     {
       "slug": "paperfact",
       "title": "Paperfact",
@@ -53,8 +23,8 @@
         "stars": 0,
         "openIssues": 0,
         "defaultBranch": "master",
-        "pushedAt": "2026-11-01T03:22:20Z",
-        "weeklyCommits": 26,
+        "pushedAt": "2026-11-08T07:02:36Z",
+        "weeklyCommits": 0,
         "latestCommit": {
           "sha": "1b44466",
           "message": "Say that Claude sign-in stays each person's own subscription",
@@ -63,6 +33,66 @@
         }
       },
       "pinned": 5
+    },
+    {
+      "slug": "reprise-studio",
+      "title": "reprise-studio",
+      "tagline": "Where covers become light — an abstract lyric MV production kit.",
+      "track": "tool",
+      "status": "active",
+      "repo": {
+        "owner": "GeniusPudding",
+        "name": "reprise-studio",
+        "private": true
+      },
+      "topics": [
+        "music"
+      ],
+      "links": [],
+      "featured": false,
+      "activity": {
+        "stars": 0,
+        "openIssues": 0,
+        "defaultBranch": "main",
+        "pushedAt": "2026-11-07T04:24:32Z",
+        "weeklyCommits": 2,
+        "latestCommit": {
+          "sha": "ea82f05",
+          "message": "Redefine the repo as the cover-production studio, bounded by data ownership",
+          "date": "2026-11-07T04:00:26Z",
+          "url": "https://github.com/GeniusPudding/reprise-studio/commit/ea82f05ca5ff1d36b5c121c124fc0ad2e10ba463"
+        }
+      }
+    },
+    {
+      "slug": "mandpopdatapipeline",
+      "title": "MandpopDataPipeline",
+      "tagline": "Automated dataset builder for Mandarin pop music: YouTube download → Demucs  vocal separation → lyrics alignment. Outputs stems + timestamped LRC for karaoke, cover production, and music AI research.",
+      "track": "tool",
+      "status": "active",
+      "repo": {
+        "owner": "puddings-world",
+        "name": "MandpopDataPipeline",
+        "private": false
+      },
+      "topics": [
+        "music"
+      ],
+      "links": [],
+      "featured": false,
+      "activity": {
+        "stars": 0,
+        "openIssues": 0,
+        "defaultBranch": "main",
+        "pushedAt": "2026-11-07T04:24:28Z",
+        "weeklyCommits": 5,
+        "latestCommit": {
+          "sha": "5f48ed3",
+          "message": "Move ytgrab and yt_clip to the standalone ytclip repo",
+          "date": "2026-11-07T03:54:46Z",
+          "url": "https://github.com/puddings-world/MandpopDataPipeline/commit/5f48ed3fdbc2a032bd9d506a643cb0f7ba12ea2b"
+        }
+      }
     },
     {
       "slug": "mapetite",
@@ -84,13 +114,13 @@
         "stars": 0,
         "openIssues": 0,
         "defaultBranch": "main",
-        "pushedAt": "2026-11-01T02:51:18Z",
-        "weeklyCommits": 23,
+        "pushedAt": "2026-11-04T07:33:59Z",
+        "weeklyCommits": 4,
         "latestCommit": {
-          "sha": "f01dac2",
-          "message": "A restore merges with what the store holds under the same key, never over it",
-          "date": "2026-11-01T02:51:16Z",
-          "url": "https://github.com/puddings-world/mapetite/commit/f01dac26b349923861be46e4196204ecc6afc555"
+          "sha": "c1b3d07",
+          "message": "Nothing automatic touches the map until the user has stopped for 5 s",
+          "date": "2026-11-04T07:33:57Z",
+          "url": "https://github.com/puddings-world/mapetite/commit/c1b3d07febff989ea4b86ea106f686d3e7fb7eb6"
         }
       }
     },
@@ -115,7 +145,7 @@
         "openIssues": 0,
         "defaultBranch": "main",
         "pushedAt": "2026-10-27T01:17:36Z",
-        "weeklyCommits": 1,
+        "weeklyCommits": 0,
         "latestCommit": {
           "sha": "84c4309",
           "message": "macOS: right-Cmd hold-to-talk, strict target gate, never steal focus",
@@ -362,36 +392,6 @@
           "message": "Move ApkSmith submodule from droidbot/ to project root",
           "date": "2026-05-01T16:10:26Z",
           "url": "https://github.com/puddings-world/SADroid/commit/dcd54e8cff22665fbd5924a42fb472edcb61bb3c"
-        }
-      }
-    },
-    {
-      "slug": "mandpopdatapipeline",
-      "title": "MandpopDataPipeline",
-      "tagline": "Automated dataset builder for Mandarin pop music: YouTube download → Demucs  vocal separation → lyrics alignment. Outputs stems + timestamped LRC for karaoke, cover production, and music AI research.",
-      "track": "tool",
-      "status": "paused",
-      "repo": {
-        "owner": "puddings-world",
-        "name": "MandpopDataPipeline",
-        "private": false
-      },
-      "topics": [
-        "music"
-      ],
-      "links": [],
-      "featured": false,
-      "activity": {
-        "stars": 0,
-        "openIssues": 0,
-        "defaultBranch": "main",
-        "pushedAt": "2026-05-01T07:35:41Z",
-        "weeklyCommits": 0,
-        "latestCommit": {
-          "sha": "37496f6",
-          "message": "Update CLAUDE.md with git conventions, sync master list",
-          "date": "2026-05-01T07:35:43Z",
-          "url": "https://github.com/puddings-world/MandpopDataPipeline/commit/37496f681a654c16716eb006db84813222aa2f22"
         }
       }
     },
