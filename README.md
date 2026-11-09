@@ -38,6 +38,7 @@ DOCKER=1 ./scripts/deploy.sh       # Docker → Cloud Run / Fly.io
 - `lib/projects.ts` — loads the snapshot, groups and sorts by track
 - `lib/analytics.ts`, `lib/admin-auth.ts`, `lib/event-log.ts` — admin dashboard
 - `lib/files/`, `scripts/upload.ts` — shared files in R2 (`/downloads`, `/admin/files`)
+- `lib/inbox/` — read-only view of what the owner's apps sent to pudding-backend (`/admin/inbox`)
 - `scripts/fetch-projects.ts` — the generator
 - `Dockerfile` — multi-stage build for self-host
 
@@ -201,6 +202,25 @@ people twice, and running per-IP limits start over.
 `lib/event-log.ts` `logEvent(type, detail?)` appends to the Redis list
 `log:events` (newest 1000). Logged today: `contact.message`, `admin.login`,
 `admin.login_failed`, and the `files.*` events below.
+
+## App inbox (`/admin/inbox`)
+
+The owner's apps (mapkit, paperfact, …) send feedback and events to
+[pudding-backend](https://github.com/GeniusPudding/pudding-backend), which keeps
+each record as one JSON object in a private GCS bucket for 90 days (the owner's
+PC holds the permanent copy). `/admin/inbox` reads that bucket directly, through
+GCS's S3-compatible API with a key that can only *view* objects, and shows per
+app: counts per kind for the last 7 and 90 days, and the newest 20 records with
+their raw body. The public ingest service itself stays write-only.
+
+**Set up once**
+
+1. In the pudding-backend repo: `uv run python -m pudding_backend reader --project <gcp project>`.
+   It creates the view-only service account and an HMAC key, and writes
+   `data/keys/inbox-reader.env`.
+2. Vercel env (Production): `PUDDING_INBOX_BUCKET`, `PUDDING_INBOX_ACCESS_KEY`,
+   `PUDDING_INBOX_SECRET` from that file. Redeploy. Until then `/admin/inbox`
+   shows these steps.
 
 ## Shared files (`/downloads`)
 

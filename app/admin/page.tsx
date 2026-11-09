@@ -88,6 +88,12 @@ export default async function AdminPage({
             </Link>
           ))}
           <Link
+            href="/admin/inbox"
+            className="ml-2 rounded border border-bg-border px-2 py-1 text-ink-muted hover:text-ink-primary"
+          >
+            inbox
+          </Link>
+          <Link
             href="/admin/files"
             className="ml-2 rounded border border-bg-border px-2 py-1 text-ink-muted hover:text-ink-primary"
           >
