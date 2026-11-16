@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-09T06:32:42.977Z",
+  "fetchedAt": "2026-11-16T06:32:00.803Z",
   "projects": [
     {
       "slug": "paperfact",
@@ -23,7 +23,7 @@
         "stars": 0,
         "openIssues": 0,
         "defaultBranch": "master",
-        "pushedAt": "2026-11-08T07:02:36Z",
+        "pushedAt": "2026-11-16T06:07:43Z",
         "weeklyCommits": 0,
         "latestCommit": {
           "sha": "1b44466",
@@ -33,6 +33,64 @@
         }
       },
       "pinned": 5
+    },
+    {
+      "slug": "mapetite",
+      "title": "mapetite",
+      "tagline": "Browser extension that curates food places on top of Google Maps, synced two-way with Google saved lists.",
+      "track": "side",
+      "status": "active",
+      "repo": {
+        "owner": "puddings-world",
+        "name": "mapetite",
+        "private": true
+      },
+      "topics": [
+        "product"
+      ],
+      "links": [],
+      "featured": false,
+      "activity": {
+        "stars": 0,
+        "openIssues": 0,
+        "defaultBranch": "main",
+        "pushedAt": "2026-11-16T05:16:18Z",
+        "weeklyCommits": 11,
+        "latestCommit": {
+          "sha": "23f24c3",
+          "message": "Ask the user what the rules cannot decide, in a quiet moment; add 類型/牛舌",
+          "date": "2026-11-16T05:16:15Z",
+          "url": "https://github.com/puddings-world/mapetite/commit/23f24c33e0eb951687a83f98bbb1910d274c328b"
+        }
+      }
+    },
+    {
+      "slug": "virtual-embryo-challenge",
+      "title": "virtual-embryo-challenge",
+      "tagline": "Submission builder, validator and local scorer for the Virtual Embryo Challenge (NeurIPS 2026)",
+      "track": "research",
+      "status": "active",
+      "repo": {
+        "owner": "GeniusPudding",
+        "name": "virtual-embryo-challenge",
+        "private": true
+      },
+      "topics": [],
+      "links": [],
+      "featured": false,
+      "activity": {
+        "stars": 1,
+        "openIssues": 0,
+        "defaultBranch": "main",
+        "pushedAt": "2026-11-15T10:13:24Z",
+        "weeklyCommits": 31,
+        "latestCommit": {
+          "sha": "f6bce7b",
+          "message": "Fit a recipe title within the line limit",
+          "date": "2026-11-15T10:13:24Z",
+          "url": "https://github.com/GeniusPudding/virtual-embryo-challenge/commit/f6bce7b52259c4febd0b1ee60315b9c81ea99f47"
+        }
+      }
     },
     {
       "slug": "reprise-studio",
@@ -55,7 +113,7 @@
         "openIssues": 0,
         "defaultBranch": "main",
         "pushedAt": "2026-11-07T04:24:32Z",
-        "weeklyCommits": 2,
+        "weeklyCommits": 0,
         "latestCommit": {
           "sha": "ea82f05",
           "message": "Redefine the repo as the cover-production studio, bounded by data ownership",
@@ -85,42 +143,12 @@
         "openIssues": 0,
         "defaultBranch": "main",
         "pushedAt": "2026-11-07T04:24:28Z",
-        "weeklyCommits": 5,
+        "weeklyCommits": 0,
         "latestCommit": {
           "sha": "5f48ed3",
           "message": "Move ytgrab and yt_clip to the standalone ytclip repo",
           "date": "2026-11-07T03:54:46Z",
           "url": "https://github.com/puddings-world/MandpopDataPipeline/commit/5f48ed3fdbc2a032bd9d506a643cb0f7ba12ea2b"
-        }
-      }
-    },
-    {
-      "slug": "mapetite",
-      "title": "mapetite",
-      "tagline": "Browser extension that curates food places on top of Google Maps, synced two-way with Google saved lists.",
-      "track": "side",
-      "status": "active",
-      "repo": {
-        "owner": "puddings-world",
-        "name": "mapetite",
-        "private": true
-      },
-      "topics": [
-        "product"
-      ],
-      "links": [],
-      "featured": false,
-      "activity": {
-        "stars": 0,
-        "openIssues": 0,
-        "defaultBranch": "main",
-        "pushedAt": "2026-11-04T07:33:59Z",
-        "weeklyCommits": 4,
-        "latestCommit": {
-          "sha": "c1b3d07",
-          "message": "Nothing automatic touches the map until the user has stopped for 5 s",
-          "date": "2026-11-04T07:33:57Z",
-          "url": "https://github.com/puddings-world/mapetite/commit/c1b3d07febff989ea4b86ea106f686d3e7fb7eb6"
         }
       }
     },
@@ -141,7 +169,7 @@
       "links": [],
       "featured": false,
       "activity": {
-        "stars": 4,
+        "stars": 5,
         "openIssues": 0,
         "defaultBranch": "main",
         "pushedAt": "2026-10-27T01:17:36Z",
@@ -154,34 +182,6 @@
         }
       },
       "pinned": 0
-    },
-    {
-      "slug": "virtual-embryo-challenge",
-      "title": "virtual-embryo-challenge",
-      "tagline": "Submission builder, validator and local scorer for the Virtual Embryo Challenge (NeurIPS 2026)",
-      "track": "research",
-      "status": "active",
-      "repo": {
-        "owner": "GeniusPudding",
-        "name": "virtual-embryo-challenge",
-        "private": true
-      },
-      "topics": [],
-      "links": [],
-      "featured": false,
-      "activity": {
-        "stars": 1,
-        "openIssues": 0,
-        "defaultBranch": "main",
-        "pushedAt": "2026-10-20T05:14:37Z",
-        "weeklyCommits": 0,
-        "latestCommit": {
-          "sha": "83f4bf7",
-          "message": "Add vec flow: OT developmental flow as a shared T1/T2/T3 backbone",
-          "date": "2026-10-20T05:14:36Z",
-          "url": "https://github.com/GeniusPudding/virtual-embryo-challenge/commit/83f4bf741ecf3df904cc6c0a8568cf11a0c9ab49"
-        }
-      }
     },
     {
       "slug": "cataract-vision-lab",
