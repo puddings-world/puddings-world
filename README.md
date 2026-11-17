@@ -93,6 +93,14 @@ message is required (max 2000 chars), name and email are optional, and a
 filled `website` field is a honeypot that is accepted and silently dropped.
 Each IP (hashed) may send 3 messages per 10 minutes.
 
+**CV requests.** The site never links the owner's real-name CV. The form's
+"Request my CV" tab (also opened by `/contact?for=cv`, see `kindFromQuery`)
+sends `kind: "cv"` plus `affiliation`; for those, name, email and affiliation
+are required and the message must be at least 80 characters
+(`CV_MIN_MESSAGE_LEN`), so the request doubles as a self-introduction. The
+email subject reads `[puddingsworld] CV request: <name> (<affiliation>)` and
+`/admin` tags it "cv request"; the owner replies with the CV link by hand.
+
 Every accepted message is pushed to the Redis list `contact:messages`
 (newest 500 kept, readable in the Upstash console) and, when
 `RESEND_API_KEY` is set, emailed through Resend with the sender's address

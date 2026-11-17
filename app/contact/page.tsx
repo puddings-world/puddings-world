@@ -1,4 +1,5 @@
 import { ContactForm } from "@/components/ContactForm";
+import { kindFromQuery } from "@/lib/contact";
 
 export const metadata = {
   title: "Contact",
@@ -10,7 +11,12 @@ const CONTACT = {
   githubPersonal: "https://github.com/GeniusPudding",
 };
 
-export default function ContactPage() {
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ for?: string | string[] }>;
+}) {
+  const initialKind = kindFromQuery((await searchParams).for);
   return (
     <main className="page py-16 [--col:42rem]">
       <header className="enter">
@@ -27,7 +33,7 @@ export default function ContactPage() {
       </header>
 
       <section className="mt-10">
-        <ContactForm />
+        <ContactForm key={initialKind} initialKind={initialKind} />
       </section>
 
       <section className="mt-8 space-y-4">

@@ -152,7 +152,13 @@ export default async function AdminPage({
               <li key={i} className="rounded-lg border border-bg-border bg-bg-panel p-4">
                 <div className="flex flex-wrap items-baseline justify-between gap-2 text-xs">
                   <span className="min-w-0 break-all text-ink-primary">
+                    {m.kind === "cv" && (
+                      <span className="mr-2 rounded border border-accent-amber/40 px-1.5 py-0.5 font-mono text-[10px] uppercase text-accent-amber">
+                        cv request
+                      </span>
+                    )}
                     {m.name}
+                    {m.affiliation && <span className="ml-1 text-ink-muted">· {m.affiliation}</span>}
                     {m.email && (
                       <a href={`mailto:${m.email}`} className="ml-2 text-accent hover:underline">
                         {m.email}

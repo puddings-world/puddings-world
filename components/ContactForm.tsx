@@ -1,7 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { MAX_MESSAGE_LEN } from "@/lib/contact";
+import {
+  CV_MIN_MESSAGE_LEN,
+  MAX_AFFILIATION_LEN,
+  MAX_MESSAGE_LEN,
+  type ContactKind,
+} from "@/lib/contact";
 
 type Status =
   | { kind: "idle" }
@@ -12,9 +17,16 @@ type Status =
 const FIELD =
   "w-full rounded-md border border-bg-border bg-bg-raised px-3 py-2 text-sm text-ink-primary placeholder:text-ink-muted focus:border-accent/60 focus:outline-none";
 
-export function ContactForm() {
+const KINDS: { value: ContactKind; label: string }[] = [
+  { value: "message", label: "Message" },
+  { value: "cv", label: "Request my CV" },
+];
+
+export function ContactForm({ initialKind = "message" }: { initialKind?: ContactKind }) {
+  const [kind, setKind] = useState<ContactKind>(initialKind);
   const [status, setStatus] = useState<Status>({ kind: "idle" });
   const [length, setLength] = useState(0);
+  const cv = kind === "cv";
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -42,7 +54,9 @@ export function ContactForm() {
   if (status.kind === "sent") {
     return (
       <div className="rounded-lg border border-accent-green/40 bg-accent-green/10 px-5 py-4 text-sm text-accent-green">
-        Thanks, your message is on its way to my inbox.{" "}
+        {cv
+          ? "Thanks, your request is in. If it fits, I'll reply with the link to my CV."
+          : "Thanks, your message is on its way to my inbox."}{" "}
         <button
           type="button"
           onClick={() => setStatus({ kind: "idle" })}
@@ -59,6 +73,34 @@ export function ContactForm() {
       onSubmit={onSubmit}
       className="relative space-y-3 rounded-lg border border-bg-border bg-bg-panel p-5"
     >
+      <div role="radiogroup" aria-label="What are you sending?" className="flex gap-1 rounded-md border border-bg-border bg-bg-raised p-1">
+        {KINDS.map((k) => (
+          <button
+            key={k.value}
+            type="button"
+            role="radio"
+            aria-checked={kind === k.value}
+            onClick={() => {
+              setKind(k.value);
+              setStatus({ kind: "idle" });
+            }}
+            className={`flex-1 rounded px-3 py-1.5 font-mono text-xs transition-colors ${
+              kind === k.value
+                ? "bg-accent/15 text-accent"
+                : "text-ink-muted hover:text-ink-primary"
+            }`}
+          >
+            {k.label}
+          </button>
+        ))}
+      </div>
+      {cv && <input type="hidden" name="kind" value="cv" />}
+      {cv && (
+        <p className="text-xs leading-relaxed text-ink-secondary">
+          My CV lives on a separate page that isn&apos;t linked from this site. Tell me who you are
+          and why you&apos;d like it; if it fits, I&apos;ll reply with the link.
+        </p>
+      )}
       <div className="grid gap-3 sm:grid-cols-2">
         <label className="block min-w-0">
           <span className="mb-1 block font-mono text-xs uppercase tracking-wider text-ink-muted">
@@ -68,7 +110,8 @@ export function ContactForm() {
             name="name"
             maxLength={60}
             autoComplete="name"
-            placeholder="optional"
+            required={cv}
+            placeholder={cv ? "required" : "optional"}
             className={FIELD}
           />
         </label>
@@ -81,14 +124,30 @@ export function ContactForm() {
             type="email"
             maxLength={120}
             autoComplete="email"
-            placeholder="optional, if you want a reply"
+            required={cv}
+            placeholder={cv ? "required, for the reply" : "optional, if you want a reply"}
             className={FIELD}
           />
         </label>
       </div>
+      {cv && (
+        <label className="block">
+          <span className="mb-1 block font-mono text-xs uppercase tracking-wider text-ink-muted">
+            Affiliation
+          </span>
+          <input
+            name="affiliation"
+            required
+            maxLength={MAX_AFFILIATION_LEN}
+            autoComplete="organization"
+            placeholder="lab, company or school, and your role"
+            className={FIELD}
+          />
+        </label>
+      )}
       <label className="block">
         <span className="mb-1 flex justify-between font-mono text-xs uppercase tracking-wider text-ink-muted">
-          <span>Message</span>
+          <span>{cv ? "Who you are and why" : "Message"}</span>
           <span className="normal-case tracking-normal">
             {length}/{MAX_MESSAGE_LEN}
           </span>
@@ -96,10 +155,15 @@ export function ContactForm() {
         <textarea
           name="message"
           required
-          rows={5}
+          rows={cv ? 6 : 5}
+          minLength={cv ? CV_MIN_MESSAGE_LEN : undefined}
           maxLength={MAX_MESSAGE_LEN}
           onChange={(e) => setLength(e.target.value.length)}
-          placeholder="Say hi, ask something, leave a note…"
+          placeholder={
+            cv
+              ? "A short self-introduction and what you'd like to work on together…"
+              : "Say hi, ask something, leave a note…"
+          }
           className={`${FIELD} resize-y leading-relaxed`}
         />
       </label>
@@ -123,7 +187,7 @@ export function ContactForm() {
           disabled={status.kind === "sending"}
           className="rounded-md border border-accent/40 bg-accent/10 px-4 py-2 font-mono text-sm text-accent transition-colors hover:bg-accent/20 disabled:opacity-50"
         >
-          {status.kind === "sending" ? "sending…" : "send →"}
+          {status.kind === "sending" ? "sending…" : cv ? "request →" : "send →"}
         </button>
       </div>
     </form>

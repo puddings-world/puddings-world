@@ -1,13 +1,20 @@
 export const MAX_NAME_LEN = 60;
 export const MAX_EMAIL_LEN = 120;
 export const MAX_MESSAGE_LEN = 2000;
+export const MAX_AFFILIATION_LEN = 120;
+/** A CV request has to say who is asking and why; a one-liner is not enough. */
+export const CV_MIN_MESSAGE_LEN = 80;
 /** Submissions allowed per IP inside RATE_WINDOW_SEC. */
 export const RATE_LIMIT = 3;
 export const RATE_WINDOW_SEC = 600;
 
+export type ContactKind = "message" | "cv";
+
 export type ContactMessage = {
+  kind?: "cv";
   name: string;
   email?: string;
+  affiliation?: string;
   message: string;
 };
 
@@ -45,6 +52,21 @@ export function parseContact(input: unknown): ParseResult {
   if (email && (email.length > MAX_EMAIL_LEN || !EMAIL.test(email)))
     return { ok: false, error: "That email address doesn't look right." };
 
+  if (raw.kind === "cv") {
+    const affiliation = clean(raw.affiliation);
+    if (!name) return { ok: false, error: "A CV request needs your name." };
+    if (!email) return { ok: false, error: "A CV request needs an email so I can reply." };
+    if (!affiliation) return { ok: false, error: "Please say where you're writing from." };
+    if (affiliation.length > MAX_AFFILIATION_LEN)
+      return { ok: false, error: `Affiliations are limited to ${MAX_AFFILIATION_LEN} characters.` };
+    if (message.length < CV_MIN_MESSAGE_LEN)
+      return {
+        ok: false,
+        error: `Tell me a bit more about yourself and why you'd like the CV (at least ${CV_MIN_MESSAGE_LEN} characters).`,
+      };
+    return { ok: true, value: { kind: "cv", name, email, affiliation, message } };
+  }
+
   return {
     ok: true,
     value: { name: name || "Anonymous", ...(email ? { email } : {}), message },
@@ -57,6 +79,18 @@ export function renderEmail(
 ): { subject: string; text: string } {
   const firstLine = msg.message.split("\n")[0];
   const preview = firstLine.length > 50 ? `${firstLine.slice(0, 50)}…` : firstLine;
+  if (msg.kind === "cv") {
+    return {
+      subject: `[puddingsworld] CV request: ${msg.name} (${msg.affiliation})`,
+      text: [
+        `From: ${msg.name} <${msg.email}>`,
+        `Affiliation: ${msg.affiliation}`,
+        `Received: ${receivedAt.toISOString()}`,
+        "",
+        msg.message,
+      ].join("\n"),
+    };
+  }
   return {
     subject: `[puddingsworld] ${msg.name}: ${preview}`,
     text: [
@@ -66,4 +100,9 @@ export function renderEmail(
       msg.message,
     ].join("\n"),
   };
+}
+
+/** `/contact?for=cv` opens the form on the CV request; anything else is a message. */
+export function kindFromQuery(value: string | string[] | undefined): ContactKind {
+  return value === "cv" ? "cv" : "message";
 }
