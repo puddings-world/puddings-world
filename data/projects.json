@@ -1,6 +1,72 @@
 {
-  "fetchedAt": "2026-11-16T06:32:00.803Z",
+  "fetchedAt": "2026-11-22T03:33:54.641Z",
   "projects": [
+    {
+      "slug": "assistant-hub",
+      "title": "Assistant Hub",
+      "tagline": "A personal agent hub that every project and tool reports into: tickets the owner closes, agents launched in one keystroke, and a morning news briefing.",
+      "description": "A desktop drawer, a phone page and an MCP server over one ledger. Agent sessions, background jobs and the other projects on this site report into it as tickets; nothing counts as done until the owner confirms it.\n\nThe console side: one keystroke opens a ticket's own terminal with Claude Code or Codex already briefed on it, puts it away when the agent is done, and resumes the same conversation later, on this machine or from another one. windoalls and visual-impression grew out of it to keep track of which terminal holds which conversation.\n\nAround it: a morning digital news briefing that scans hundreds of sources, files the day's stories under the topics being followed with short summaries, and turns a story into a reading item or a ticket; AI usage and quota at a glance; the machine's own vital signs; calendar capture from a screenshot; and page and booking watchers that report back.",
+      "track": "tool",
+      "status": "active",
+      "repo": {
+        "owner": "GeniusPudding",
+        "name": "puddings-personal-assistant",
+        "private": true
+      },
+      "topics": [],
+      "links": [
+        {
+          "label": "windoalls",
+          "href": "/projects/windoalls"
+        },
+        {
+          "label": "visual-impression",
+          "href": "/projects/visual-impression"
+        }
+      ],
+      "featured": false,
+      "activity": {
+        "stars": 0,
+        "openIssues": 0,
+        "defaultBranch": "main",
+        "pushedAt": "2026-11-22T03:32:43Z",
+        "weeklyCommits": 5,
+        "latestCommit": {
+          "sha": "6206050",
+          "message": "Add puddings-world site manifest",
+          "date": "2026-11-22T03:32:43Z",
+          "url": "https://github.com/GeniusPudding/puddings-personal-assistant/commit/6206050f186abbfe5e624ef1544d1f3098501213"
+        }
+      }
+    },
+    {
+      "slug": "windoalls",
+      "title": "windoalls",
+      "tagline": "Everything, from the Windows terminal - track and restore AI coding sessions across terminal tabs, reboots and crashes.",
+      "track": "tool",
+      "status": "active",
+      "repo": {
+        "owner": "GeniusPudding",
+        "name": "windoalls",
+        "private": true
+      },
+      "topics": [],
+      "links": [],
+      "featured": false,
+      "activity": {
+        "stars": 1,
+        "openIssues": 0,
+        "defaultBranch": "master",
+        "pushedAt": "2026-11-22T02:08:41Z",
+        "weeklyCommits": 20,
+        "latestCommit": {
+          "sha": "bafa8eb",
+          "message": "Shift+Alt+4 opens the saved snip in the Snipping Tool editor",
+          "date": "2026-11-22T02:08:38Z",
+          "url": "https://github.com/GeniusPudding/windoalls/commit/bafa8eb471458208e0ad1b7b76c37c9f7c8e725e"
+        }
+      }
+    },
     {
       "slug": "paperfact",
       "title": "Paperfact",
@@ -23,7 +89,7 @@
         "stars": 0,
         "openIssues": 0,
         "defaultBranch": "master",
-        "pushedAt": "2026-11-16T06:07:43Z",
+        "pushedAt": "2026-11-21T19:21:04Z",
         "weeklyCommits": 0,
         "latestCommit": {
           "sha": "1b44466",
@@ -33,6 +99,34 @@
         }
       },
       "pinned": 5
+    },
+    {
+      "slug": "virtual-embryo-challenge",
+      "title": "virtual-embryo-challenge",
+      "tagline": "Submission builder, validator and local scorer for the Virtual Embryo Challenge (NeurIPS 2026)",
+      "track": "research",
+      "status": "active",
+      "repo": {
+        "owner": "GeniusPudding",
+        "name": "virtual-embryo-challenge",
+        "private": true
+      },
+      "topics": [],
+      "links": [],
+      "featured": false,
+      "activity": {
+        "stars": 1,
+        "openIssues": 0,
+        "defaultBranch": "main",
+        "pushedAt": "2026-11-21T18:47:04Z",
+        "weeklyCommits": 29,
+        "latestCommit": {
+          "sha": "a989a44",
+          "message": "Final entries: recipes as uploaded, docs/final.md method report, README result section; place --geometry-types",
+          "date": "2026-11-21T18:46:59Z",
+          "url": "https://github.com/GeniusPudding/virtual-embryo-challenge/commit/a989a44eac20b147300eed2a5f027fa2143e3fe7"
+        }
+      }
     },
     {
       "slug": "mapetite",
@@ -54,26 +148,26 @@
         "stars": 0,
         "openIssues": 0,
         "defaultBranch": "main",
-        "pushedAt": "2026-11-16T05:16:18Z",
-        "weeklyCommits": 11,
+        "pushedAt": "2026-11-21T17:14:33Z",
+        "weeklyCommits": 10,
         "latestCommit": {
-          "sha": "23f24c3",
-          "message": "Ask the user what the rules cannot decide, in a quiet moment; add 類型/牛舌",
-          "date": "2026-11-16T05:16:15Z",
-          "url": "https://github.com/puddings-world/mapetite/commit/23f24c33e0eb951687a83f98bbb1910d274c328b"
+          "sha": "45b27f6",
+          "message": "The AI tagger no longer fills 情境, 氛圍 or 用餐形式",
+          "date": "2026-11-21T17:14:30Z",
+          "url": "https://github.com/puddings-world/mapetite/commit/45b27f6fbefb417ff75d9972bf952e1ab69749e3"
         }
       }
     },
     {
-      "slug": "virtual-embryo-challenge",
-      "title": "virtual-embryo-challenge",
-      "tagline": "Submission builder, validator and local scorer for the Virtual Embryo Challenge (NeurIPS 2026)",
-      "track": "research",
+      "slug": "visual-impression",
+      "title": "visual-impression",
+      "tagline": "Restore the AI coding conversation that was running in each terminal, per project. Windows, macOS and Linux, including over Remote SSH.",
+      "track": "tool",
       "status": "active",
       "repo": {
         "owner": "GeniusPudding",
-        "name": "virtual-embryo-challenge",
-        "private": true
+        "name": "visual-impression",
+        "private": false
       },
       "topics": [],
       "links": [],
@@ -81,14 +175,14 @@
       "activity": {
         "stars": 1,
         "openIssues": 0,
-        "defaultBranch": "main",
-        "pushedAt": "2026-11-15T10:13:24Z",
-        "weeklyCommits": 31,
+        "defaultBranch": "master",
+        "pushedAt": "2026-11-20T03:16:28Z",
+        "weeklyCommits": 1,
         "latestCommit": {
-          "sha": "f6bce7b",
-          "message": "Fit a recipe title within the line limit",
-          "date": "2026-11-15T10:13:24Z",
-          "url": "https://github.com/GeniusPudding/virtual-embryo-challenge/commit/f6bce7b52259c4febd0b1ee60315b9c81ea99f47"
+          "sha": "197d948",
+          "message": "A window opened for 開工 shows the restore picker at once, without the conversation it is resuming",
+          "date": "2026-11-20T03:16:25Z",
+          "url": "https://github.com/GeniusPudding/visual-impression/commit/197d948273d0c87f2e34ff85bea6ec14b82ba655"
         }
       }
     },
@@ -561,13 +655,13 @@
         "stars": 1,
         "openIssues": 0,
         "defaultBranch": "main",
-        "pushedAt": "2026-10-24T03:26:59Z",
-        "weeklyCommits": 0,
+        "pushedAt": "2026-11-18T18:36:05Z",
+        "weeklyCommits": 2,
         "latestCommit": {
-          "sha": "91cf542",
-          "message": "Add PTS-aligned review workstation and verified cloud batch workflows",
-          "date": "2026-10-24T03:26:40Z",
-          "url": "https://github.com/puddingforhealth/SurgeryOCR/commit/91cf542de121dab516d89e49690095d408477b80"
+          "sha": "f262926",
+          "message": "Exercise Vent exclusion in CI with a generated instrument panel",
+          "date": "2026-11-18T18:36:03Z",
+          "url": "https://github.com/puddingforhealth/SurgeryOCR/commit/f2629269edd5e875021a7b6ccc712cbd83a863b0"
         }
       }
     },
