@@ -1,59 +1,6 @@
 {
-  "fetchedAt": "2026-11-22T03:47:08.094Z",
+  "fetchedAt": "2026-11-22T04:03:18.930Z",
   "projects": [
-    {
-      "slug": "san11-smart-ai",
-      "title": "San11 Smart AI",
-      "tagline": "An unofficial smarter-AI mode for Romance of the Three Kingdoms XI, built on a reproducible study of how the original game AI actually decides.",
-      "description": "The goal: rival rulers that plan like strong players, as a supplement that players load onto their own copy of the game. The project ships no game files.\n\nIt is still experimental, with nothing playable to hand out yet. The current work is reverse-engineering the original AI first: instrumented, replayable experiments, each recorded with its evidence and what it rules out, before any new strategy or learned policy is layered on top.",
-      "track": "side",
-      "status": "active",
-      "repo": {
-        "owner": "GeniusPudding",
-        "name": "san11-smart-ai",
-        "private": true
-      },
-      "topics": [],
-      "links": [
-        {
-          "label": "Research atlas",
-          "href": "https://san11-original-ai-atlas.geniuspudding.chatgpt.site"
-        }
-      ],
-      "featured": false,
-      "progress": [
-        {
-          "title": "Public research atlas of the original AI",
-          "status": "done"
-        },
-        {
-          "title": "Instrumented, replayable study of the original game AI",
-          "status": "doing",
-          "note": "Nearly 80 numbered experiments so far"
-        },
-        {
-          "title": "Smart-mode supplement that loads onto the player's own copy",
-          "status": "next"
-        },
-        {
-          "title": "Stronger strategy, including learned policies",
-          "status": "next"
-        }
-      ],
-      "activity": {
-        "stars": 0,
-        "openIssues": 0,
-        "defaultBranch": "main",
-        "pushedAt": "2026-11-22T03:41:07Z",
-        "weeklyCommits": 1,
-        "latestCommit": {
-          "sha": "b574f78",
-          "url": "https://github.com/GeniusPudding/san11-smart-ai/commit/b574f78e4dccc3c21a53bfa2673173a1d7fe34c2",
-          "message": "Add puddings-world site manifest",
-          "date": "2026-11-22T03:41:07Z"
-        }
-      }
-    },
     {
       "slug": "paperfact",
       "title": "Paperfact",
@@ -107,13 +54,14 @@
         "stars": 0,
         "openIssues": 0,
         "defaultBranch": "master",
-        "pushedAt": "2026-11-22T03:41:06Z",
+        "pushedAt": "2026-11-22T04:00:58Z",
         "weeklyCommits": 201,
         "latestCommit": {
-          "sha": "5b37c30",
-          "url": "https://github.com/puddings-world/Paperfact/commit/5b37c30c59944ab75b4264d7abfb697ff4c1fa93",
-          "message": "Add puddings-world site manifest with the v0.5 roadmap",
-          "date": "2026-11-22T03:41:05Z"
+          "sha": "876ea2d",
+          "url": "https://github.com/puddings-world/Paperfact/commit/876ea2d305b16366f67527acdf04a8ce2b2c9f8a",
+          "message": "Batch verified originals into compatible per-list Drive snapshots",
+          "date": "2026-11-22T04:00:43Z",
+          "branch": "develop/0.5"
         }
       },
       "pinned": 5
@@ -142,17 +90,86 @@
         }
       ],
       "featured": false,
+      "core": true,
+      "connects": [
+        "paperfact",
+        "mapetite",
+        "windoalls",
+        "visual-impression",
+        "kaikou-claude",
+        "clip-claude",
+        "listen-claude",
+        "streetperformermaster",
+        "reprise-studio",
+        "virtual-embryo-challenge",
+        "cataract-vision-lab",
+        "surgeryocr",
+        "san11-smart-ai"
+      ],
       "activity": {
         "stars": 0,
         "openIssues": 0,
         "defaultBranch": "main",
-        "pushedAt": "2026-11-22T03:32:43Z",
+        "pushedAt": "2026-11-22T03:55:58Z",
         "weeklyCommits": 5,
         "latestCommit": {
-          "sha": "6206050",
-          "url": "https://github.com/GeniusPudding/puddings-personal-assistant/commit/6206050f186abbfe5e624ef1544d1f3098501213",
+          "sha": "f9d973a",
+          "url": "https://github.com/GeniusPudding/puddings-personal-assistant/commit/f9d973aca227c2d761fce59f4bfaf8cf3849a19c",
+          "message": "Site manifest: centre of the world map, linked development lines",
+          "date": "2026-11-22T03:55:58Z"
+        }
+      }
+    },
+    {
+      "slug": "san11-smart-ai",
+      "title": "San11 Smart AI",
+      "tagline": "An unofficial smarter-AI mode for Romance of the Three Kingdoms XI, built on a reproducible study of how the original game AI actually decides.",
+      "description": "The goal: rival rulers that plan like strong players, as a supplement that players load onto their own copy of the game. The project ships no game files.\n\nIt is still experimental, with nothing playable to hand out yet. The current work is reverse-engineering the original AI first: instrumented, replayable experiments, each recorded with its evidence and what it rules out, before any new strategy or learned policy is layered on top.",
+      "track": "side",
+      "status": "active",
+      "repo": {
+        "owner": "GeniusPudding",
+        "name": "san11-smart-ai",
+        "private": true
+      },
+      "topics": [],
+      "links": [
+        {
+          "label": "Research atlas",
+          "href": "https://san11-original-ai-atlas.geniuspudding.chatgpt.site"
+        }
+      ],
+      "featured": false,
+      "progress": [
+        {
+          "title": "Public research atlas of the original AI",
+          "status": "done"
+        },
+        {
+          "title": "Instrumented, replayable study of the original game AI",
+          "status": "doing",
+          "note": "Nearly 80 numbered experiments so far"
+        },
+        {
+          "title": "Smart-mode supplement that loads onto the player's own copy",
+          "status": "next"
+        },
+        {
+          "title": "Stronger strategy, including learned policies",
+          "status": "next"
+        }
+      ],
+      "activity": {
+        "stars": 0,
+        "openIssues": 0,
+        "defaultBranch": "main",
+        "pushedAt": "2026-11-22T03:41:07Z",
+        "weeklyCommits": 1,
+        "latestCommit": {
+          "sha": "b574f78",
+          "url": "https://github.com/GeniusPudding/san11-smart-ai/commit/b574f78e4dccc3c21a53bfa2673173a1d7fe34c2",
           "message": "Add puddings-world site manifest",
-          "date": "2026-11-22T03:32:43Z"
+          "date": "2026-11-22T03:41:07Z"
         }
       }
     },
