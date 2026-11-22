@@ -178,6 +178,9 @@ export default async function ProjectDetailPage({
                 {activity.latestCommit && (
                   <Row label="Last commit" value={formatRelative(activity.latestCommit.date)} />
                 )}
+                {activity.latestCommit?.branch && (
+                  <Row label="On branch" value={activity.latestCommit.branch} />
+                )}
                 {activity.latestRelease && (
                   <Row
                     label="Latest release"

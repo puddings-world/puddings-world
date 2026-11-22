@@ -39,7 +39,8 @@ DOCKER=1 ./scripts/deploy.sh       # Docker → Cloud Run / Fly.io
 - `lib/analytics.ts`, `lib/admin-auth.ts`, `lib/event-log.ts` — admin dashboard
 - `lib/files/`, `scripts/upload.ts` — shared files in R2 (`/downloads`, `/admin/files`)
 - `lib/inbox/` — read-only view of what the owner's apps sent to pudding-backend (`/admin/inbox`)
-- `scripts/fetch-projects.ts` — the generator
+- `scripts/fetch-projects.ts` — the generator; `lib/activity.ts` — activity across branches
+- `scripts/weekly-digest.ts`, `lib/digest.ts` — weekly /projects digest to Assistant Hub
 - `Dockerfile` — multi-stage build for self-host
 
 ## Design system: layout and motion
@@ -336,6 +337,10 @@ uploader shared by browser and CLI, `r2.ts` S3 signing via `aws4fetch`,
    `order`, `progress`.
 5. Reads `CITATION.cff` if present and renders it as the project's paper.
 6. Attaches stars, open issues, weekly commits, latest commit and release.
+   Activity spans every branch (up to 30, default first; `branchActivity` in
+   `lib/activity.ts`): work on a develop or feature branch counts before it
+   is merged, a commit reachable from several branches counts once, and when
+   the latest commit is not on the default branch the card says which branch.
 7. Appends `content/external-projects.ts` — repos this account cannot tag.
 
 A screenshot at `public/projects/<slug>.{jpg,png,webp}` (16:9, 1280×720,
@@ -381,5 +386,42 @@ GH_PAT=$(gh auth token) pnpm fetch-projects
 The Action needs a `GH_PAT` repository secret (fine-grained token, read-only
 on contents + metadata for the repos to show) for private repos and a higher
 rate limit; without it only public repos are discovered.
+
+### Weekly digest to Assistant Hub
+
+`scripts/weekly-digest.ts` tells the owner what changed, through their
+Assistant Hub. It runs on the owner's PC, not in CI, because it lists private
+repos that must not appear in this public repo's Actions logs.
+
+1. Compares the last reported `data/projects.json` on `origin/main` (first
+   run: the newest one at least 6 days old) with the current one: projects
+   added, removed, with new commits (busiest first, with branch) and status
+   changes (`diffSnapshots` in `lib/digest.ts`).
+2. Lists **candidates**: repos visible to `gh` that were pushed in the last 30
+   days but are neither on the site nor ignored (`untaggedCandidates`).
+3. Files one hub task per week (`idempotency_key`
+   `puddings-world:weekly-digest:<Monday>`, hub project `puddings-world`) with
+   the report. Candidates end the report as a numbered question, so the hub
+   shows them as checkboxes; the task carries a note telling the agent that
+   picks up the answer to tag the ticked repos and add the rest to the ignore
+   list. A quiet week posts nothing. The report is in Traditional Chinese
+   because the hub is the owner's own Chinese interface.
+
+```powershell
+npx tsx scripts/weekly-digest.ts --dry-run   # print the digest, change nothing
+npx tsx scripts/weekly-digest.ts             # post it -> "Reported to Assistant Hub as T-..."
+./scripts/register-weekly-digest.ps1         # once: register hub tool widget.site-projects.digest
+```
+
+| Setting | Default | Purpose |
+|---|---|---|
+| `PW_DIGEST_HOME` | `%LOCALAPPDATA%/puddings-world` (Windows), `$XDG_STATE_HOME/puddings-world` | holds `digest-state.json` (last reported commit) and `digest-ignore.json` (`["owner/name", ...]`, repos never to propose) |
+| `ASSISTANT_HUB_CLIENT` | `~/.claude/skills/assistant/scripts/hub_client.py` | the hub client it posts through |
+| `PYTHON` | `python` (`python3` off Windows) | interpreter for the hub client |
+| `ASSISTANT_HUB_ROOT` (register script) | `../pudding-lifestyle-tools/assistant-hub` | where `assistant_hub register` runs; `-Python` picks the interpreter |
+
+The hub routine 「網站每週專案摘要」 runs the tool every Monday 16:00
+(Taipei), after the weekly refresh has usually landed. A late refresh loses
+nothing: the next run compares against the last reported snapshot.
 
 Created 2026-04-28.

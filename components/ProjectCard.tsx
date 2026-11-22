@@ -98,6 +98,12 @@ export function ProjectCard({ project }: { project: Project }) {
             <span className="text-ink-secondary">
               {formatRelative(activity.latestCommit.date)}
             </span>
+            {activity.latestCommit.branch && (
+              <>
+                {" on "}
+                <span className="font-mono text-ink-secondary">{activity.latestCommit.branch}</span>
+              </>
+            )}
             {" · "}
           </span>
           <span className="min-w-0 truncate font-mono">{activity.latestCommit.message}</span>

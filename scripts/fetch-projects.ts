@@ -6,6 +6,8 @@
 import { writeFile, mkdir } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { externalProjects } from "../content/external-projects";
+import { branchActivity, branchesToRead, type BranchLog } from "../lib/activity";
+import { MARKER_TOPIC } from "../lib/digest";
 import { normalizeProgress } from "../lib/progress";
 import { applyPins } from "../lib/projects";
 import type {
@@ -18,7 +20,6 @@ import type {
   TrackSlug,
 } from "../lib/types";
 
-const MARKER_TOPIC = "puddings-world";
 const MANIFEST_PATH = ".puddings.json";
 const USER = "GeniusPudding";
 // Other accounts whose public repos are scanned for the marker topic.
@@ -77,8 +78,10 @@ type RepoResponse = {
 type CommitResponse = {
   sha: string;
   html_url: string;
-  commit: { message: string; author: { date: string } };
+  commit: { message: string; author: { date: string }; committer: { date: string } | null };
 };
+
+type BranchResponse = { name: string };
 
 type ReleaseResponse = {
   tag_name: string;
@@ -195,30 +198,37 @@ async function fetchActivity(repo: RepoResponse): Promise<Activity> {
   const { login: owner } = repo.owner;
   const { name } = repo;
   const since = new Date(Date.now() - 7 * 24 * 3600 * 1000).toISOString();
-  const [weekly, latest, release] = await Promise.all([
-    gh<CommitResponse[]>(
-      `/repos/${owner}/${name}/commits?since=${encodeURIComponent(since)}&per_page=100`,
-    ).catch(() => [] as CommitResponse[]),
-    gh<CommitResponse[]>(`/repos/${owner}/${name}/commits?per_page=1`).catch(
-      () => [] as CommitResponse[],
+  const branches = await gh<BranchResponse[]>(`/repos/${owner}/${name}/branches?per_page=100`)
+    .then((list) => list.map((b) => b.name))
+    .catch(() => [] as string[]);
+  const [logs, release] = await Promise.all([
+    Promise.all(
+      branchesToRead(branches, repo.default_branch).map(
+        async (branch): Promise<BranchLog> => ({
+          branch,
+          commits: (
+            await gh<CommitResponse[]>(
+              `/repos/${owner}/${name}/commits?sha=${encodeURIComponent(branch)}&per_page=100`,
+            ).catch(() => [] as CommitResponse[])
+          ).map((c) => ({
+            sha: c.sha,
+            url: c.html_url,
+            message: c.commit.message.split("\n")[0],
+            date: c.commit.committer?.date ?? c.commit.author.date,
+          })),
+        }),
+      ),
     ),
     ghOptional<ReleaseResponse>(`/repos/${owner}/${name}/releases/latest`).catch(() => null),
   ]);
-  const head = latest[0];
+  const { weeklyCommits, latestCommit } = branchActivity(logs, repo.default_branch, since);
   return {
     stars: repo.stargazers_count,
     openIssues: repo.open_issues_count,
     defaultBranch: repo.default_branch,
     pushedAt: repo.pushed_at,
-    weeklyCommits: weekly.length,
-    latestCommit: head
-      ? {
-          sha: head.sha.slice(0, 7),
-          message: head.commit.message.split("\n")[0],
-          date: head.commit.author.date,
-          url: head.html_url,
-        }
-      : undefined,
+    weeklyCommits,
+    latestCommit: latestCommit && { ...latestCommit, sha: latestCommit.sha.slice(0, 7) },
     latestRelease: release
       ? {
           tag: release.tag_name,

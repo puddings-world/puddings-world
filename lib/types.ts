@@ -56,6 +56,8 @@ export type Activity = {
     message: string;
     date: string;
     url: string;
+    /** Set when the latest work is on a branch other than the default one. */
+    branch?: string;
   };
   latestRelease?: {
     tag: string;
