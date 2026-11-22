@@ -1,6 +1,123 @@
 {
-  "fetchedAt": "2026-11-22T03:33:54.641Z",
+  "fetchedAt": "2026-11-22T03:47:08.094Z",
   "projects": [
+    {
+      "slug": "san11-smart-ai",
+      "title": "San11 Smart AI",
+      "tagline": "An unofficial smarter-AI mode for Romance of the Three Kingdoms XI, built on a reproducible study of how the original game AI actually decides.",
+      "description": "The goal: rival rulers that plan like strong players, as a supplement that players load onto their own copy of the game. The project ships no game files.\n\nIt is still experimental, with nothing playable to hand out yet. The current work is reverse-engineering the original AI first: instrumented, replayable experiments, each recorded with its evidence and what it rules out, before any new strategy or learned policy is layered on top.",
+      "track": "side",
+      "status": "active",
+      "repo": {
+        "owner": "GeniusPudding",
+        "name": "san11-smart-ai",
+        "private": true
+      },
+      "topics": [],
+      "links": [
+        {
+          "label": "Research atlas",
+          "href": "https://san11-original-ai-atlas.geniuspudding.chatgpt.site"
+        }
+      ],
+      "featured": false,
+      "progress": [
+        {
+          "title": "Public research atlas of the original AI",
+          "status": "done"
+        },
+        {
+          "title": "Instrumented, replayable study of the original game AI",
+          "status": "doing",
+          "note": "Nearly 80 numbered experiments so far"
+        },
+        {
+          "title": "Smart-mode supplement that loads onto the player's own copy",
+          "status": "next"
+        },
+        {
+          "title": "Stronger strategy, including learned policies",
+          "status": "next"
+        }
+      ],
+      "activity": {
+        "stars": 0,
+        "openIssues": 0,
+        "defaultBranch": "main",
+        "pushedAt": "2026-11-22T03:41:07Z",
+        "weeklyCommits": 1,
+        "latestCommit": {
+          "sha": "b574f78",
+          "url": "https://github.com/GeniusPudding/san11-smart-ai/commit/b574f78e4dccc3c21a53bfa2673173a1d7fe34c2",
+          "message": "Add puddings-world site manifest",
+          "date": "2026-11-22T03:41:07Z"
+        }
+      }
+    },
+    {
+      "slug": "paperfact",
+      "title": "Paperfact",
+      "tagline": "Desktop paper reader that turns any paper into a guided reading session: AI commentary, citation maps, notes, slides and shareable research bundles.",
+      "track": "tool",
+      "status": "active",
+      "repo": {
+        "owner": "puddings-world",
+        "name": "Paperfact",
+        "private": false
+      },
+      "topics": [
+        "papers",
+        "pyside6",
+        "reading"
+      ],
+      "links": [],
+      "featured": false,
+      "progress": [
+        {
+          "title": "v0.4: desktop reader with AI commentary, citation maps, notes and shareable research bundles",
+          "status": "done",
+          "note": "Windows and Mac releases"
+        },
+        {
+          "title": "v0.5: research across devices",
+          "status": "doing",
+          "note": "Desktop, Mac and a private mobile reader; offline-first sync with recoverable conflicts and version history"
+        },
+        {
+          "title": "Reports with sources",
+          "status": "doing",
+          "note": "Every claim links to the exact passage and original PDF it came from, or says no source was found"
+        },
+        {
+          "title": "Reading goals per list",
+          "status": "next",
+          "note": "Each paper opens at the depth and with the background its list's goal needs"
+        },
+        {
+          "title": "Why a paper exists",
+          "status": "next",
+          "note": "The gap it fills and how later work built on it, quoted from the papers themselves"
+        },
+        {
+          "title": "Installed-device acceptance and the public v0.5 release",
+          "status": "next"
+        }
+      ],
+      "activity": {
+        "stars": 0,
+        "openIssues": 0,
+        "defaultBranch": "master",
+        "pushedAt": "2026-11-22T03:41:06Z",
+        "weeklyCommits": 201,
+        "latestCommit": {
+          "sha": "5b37c30",
+          "url": "https://github.com/puddings-world/Paperfact/commit/5b37c30c59944ab75b4264d7abfb697ff4c1fa93",
+          "message": "Add puddings-world site manifest with the v0.5 roadmap",
+          "date": "2026-11-22T03:41:05Z"
+        }
+      },
+      "pinned": 5
+    },
     {
       "slug": "assistant-hub",
       "title": "Assistant Hub",
@@ -33,9 +150,9 @@
         "weeklyCommits": 5,
         "latestCommit": {
           "sha": "6206050",
+          "url": "https://github.com/GeniusPudding/puddings-personal-assistant/commit/6206050f186abbfe5e624ef1544d1f3098501213",
           "message": "Add puddings-world site manifest",
-          "date": "2026-11-22T03:32:43Z",
-          "url": "https://github.com/GeniusPudding/puddings-personal-assistant/commit/6206050f186abbfe5e624ef1544d1f3098501213"
+          "date": "2026-11-22T03:32:43Z"
         }
       }
     },
@@ -61,44 +178,11 @@
         "weeklyCommits": 20,
         "latestCommit": {
           "sha": "bafa8eb",
+          "url": "https://github.com/GeniusPudding/windoalls/commit/bafa8eb471458208e0ad1b7b76c37c9f7c8e725e",
           "message": "Shift+Alt+4 opens the saved snip in the Snipping Tool editor",
-          "date": "2026-11-22T02:08:38Z",
-          "url": "https://github.com/GeniusPudding/windoalls/commit/bafa8eb471458208e0ad1b7b76c37c9f7c8e725e"
+          "date": "2026-11-22T02:08:38Z"
         }
       }
-    },
-    {
-      "slug": "paperfact",
-      "title": "Paperfact",
-      "tagline": "Desktop paper reader that turns any paper into a guided reading session: AI commentary, citation maps, notes, slides and shareable research bundles.",
-      "track": "tool",
-      "status": "active",
-      "repo": {
-        "owner": "puddings-world",
-        "name": "Paperfact",
-        "private": false
-      },
-      "topics": [
-        "papers",
-        "pyside6",
-        "reading"
-      ],
-      "links": [],
-      "featured": false,
-      "activity": {
-        "stars": 0,
-        "openIssues": 0,
-        "defaultBranch": "master",
-        "pushedAt": "2026-11-21T19:21:04Z",
-        "weeklyCommits": 0,
-        "latestCommit": {
-          "sha": "1b44466",
-          "message": "Say that Claude sign-in stays each person's own subscription",
-          "date": "2026-10-31T09:56:03Z",
-          "url": "https://github.com/puddings-world/Paperfact/commit/1b44466a2aaf5a3ea17a3eba16f27777f0507a36"
-        }
-      },
-      "pinned": 5
     },
     {
       "slug": "virtual-embryo-challenge",
@@ -122,9 +206,9 @@
         "weeklyCommits": 29,
         "latestCommit": {
           "sha": "a989a44",
+          "url": "https://github.com/GeniusPudding/virtual-embryo-challenge/commit/a989a44eac20b147300eed2a5f027fa2143e3fe7",
           "message": "Final entries: recipes as uploaded, docs/final.md method report, README result section; place --geometry-types",
-          "date": "2026-11-21T18:46:59Z",
-          "url": "https://github.com/GeniusPudding/virtual-embryo-challenge/commit/a989a44eac20b147300eed2a5f027fa2143e3fe7"
+          "date": "2026-11-21T18:46:59Z"
         }
       }
     },
@@ -152,9 +236,9 @@
         "weeklyCommits": 10,
         "latestCommit": {
           "sha": "45b27f6",
+          "url": "https://github.com/puddings-world/mapetite/commit/45b27f6fbefb417ff75d9972bf952e1ab69749e3",
           "message": "The AI tagger no longer fills 情境, 氛圍 or 用餐形式",
-          "date": "2026-11-21T17:14:30Z",
-          "url": "https://github.com/puddings-world/mapetite/commit/45b27f6fbefb417ff75d9972bf952e1ab69749e3"
+          "date": "2026-11-21T17:14:30Z"
         }
       }
     },
@@ -180,9 +264,9 @@
         "weeklyCommits": 1,
         "latestCommit": {
           "sha": "197d948",
+          "url": "https://github.com/GeniusPudding/visual-impression/commit/197d948273d0c87f2e34ff85bea6ec14b82ba655",
           "message": "A window opened for 開工 shows the restore picker at once, without the conversation it is resuming",
-          "date": "2026-11-20T03:16:25Z",
-          "url": "https://github.com/GeniusPudding/visual-impression/commit/197d948273d0c87f2e34ff85bea6ec14b82ba655"
+          "date": "2026-11-20T03:16:25Z"
         }
       }
     },
@@ -210,9 +294,9 @@
         "weeklyCommits": 0,
         "latestCommit": {
           "sha": "ea82f05",
+          "url": "https://github.com/GeniusPudding/reprise-studio/commit/ea82f05ca5ff1d36b5c121c124fc0ad2e10ba463",
           "message": "Redefine the repo as the cover-production studio, bounded by data ownership",
-          "date": "2026-11-07T04:00:26Z",
-          "url": "https://github.com/GeniusPudding/reprise-studio/commit/ea82f05ca5ff1d36b5c121c124fc0ad2e10ba463"
+          "date": "2026-11-07T04:00:26Z"
         }
       }
     },
@@ -240,9 +324,9 @@
         "weeklyCommits": 0,
         "latestCommit": {
           "sha": "5f48ed3",
+          "url": "https://github.com/puddings-world/MandpopDataPipeline/commit/5f48ed3fdbc2a032bd9d506a643cb0f7ba12ea2b",
           "message": "Move ytgrab and yt_clip to the standalone ytclip repo",
-          "date": "2026-11-07T03:54:46Z",
-          "url": "https://github.com/puddings-world/MandpopDataPipeline/commit/5f48ed3fdbc2a032bd9d506a643cb0f7ba12ea2b"
+          "date": "2026-11-07T03:54:46Z"
         }
       }
     },
@@ -270,9 +354,9 @@
         "weeklyCommits": 0,
         "latestCommit": {
           "sha": "84c4309",
+          "url": "https://github.com/puddings-world/Kaikou-Claude/commit/84c430911cc897261361d389ac71ad418cf17ea1",
           "message": "macOS: right-Cmd hold-to-talk, strict target gate, never steal focus",
-          "date": "2026-10-27T01:17:33Z",
-          "url": "https://github.com/puddings-world/Kaikou-Claude/commit/84c430911cc897261361d389ac71ad418cf17ea1"
+          "date": "2026-10-27T01:17:33Z"
         }
       },
       "pinned": 0
@@ -301,9 +385,9 @@
         "weeklyCommits": 0,
         "latestCommit": {
           "sha": "65e4e6c",
+          "url": "https://github.com/puddings-world/cataract-vision-lab/commit/65e4e6c8805b3e2ada41e960bdab9d08725dd705",
           "message": "Bundle: stage the surgmamba, srmamba, mstcn and mc_resnet50_bigru families",
-          "date": "2026-10-12T03:54:08Z",
-          "url": "https://github.com/puddings-world/cataract-vision-lab/commit/65e4e6c8805b3e2ada41e960bdab9d08725dd705"
+          "date": "2026-10-12T03:54:08Z"
         }
       }
     },
@@ -331,9 +415,9 @@
         "weeklyCommits": 0,
         "latestCommit": {
           "sha": "37d2f98",
+          "url": "https://github.com/puddings-world/StreetPerformerMaster/commit/37d2f983e117708be290d6a843fbe42ca01617d1",
           "message": "feat(contract): machine-readable KTV contract + per-language codegen",
-          "date": "2026-07-03T05:32:22Z",
-          "url": "https://github.com/puddings-world/StreetPerformerMaster/commit/37d2f983e117708be290d6a843fbe42ca01617d1"
+          "date": "2026-07-03T05:32:22Z"
         }
       }
     },
@@ -361,9 +445,9 @@
         "weeklyCommits": 0,
         "latestCommit": {
           "sha": "840b9ab",
+          "url": "https://github.com/puddings-world/Clip-Claude/commit/840b9ab22ca9981e6a171620d8a02c616b6e1e24",
           "message": "Cross-platform paste + SSH bridge",
-          "date": "2026-07-03T05:13:07Z",
-          "url": "https://github.com/puddings-world/Clip-Claude/commit/840b9ab22ca9981e6a171620d8a02c616b6e1e24"
+          "date": "2026-07-03T05:13:07Z"
         }
       },
       "pinned": 3
@@ -392,9 +476,9 @@
         "weeklyCommits": 0,
         "latestCommit": {
           "sha": "4d9d9da",
+          "url": "https://github.com/puddings-world/reverse-turing-test/commit/4d9d9da2ac4ef91e35172c0a26550a8e4672a182",
           "message": "Bump cache-buster to 20260606a for the 3-question final UI rewrite",
-          "date": "2026-06-05T18:03:01Z",
-          "url": "https://github.com/puddings-world/reverse-turing-test/commit/4d9d9da2ac4ef91e35172c0a26550a8e4672a182"
+          "date": "2026-06-05T18:03:01Z"
         }
       }
     },
@@ -422,9 +506,9 @@
         "weeklyCommits": 0,
         "latestCommit": {
           "sha": "a1710c1",
+          "url": "https://github.com/puddings-world/Listen-Claude/commit/a1710c175c9f7a17f85affb5d6deffb4daa5c70e",
           "message": "/listen off: hard-stop — purge queue + kill in-progress audio",
-          "date": "2026-05-27T14:05:03Z",
-          "url": "https://github.com/puddings-world/Listen-Claude/commit/a1710c175c9f7a17f85affb5d6deffb4daa5c70e"
+          "date": "2026-05-27T14:05:03Z"
         }
       }
     },
@@ -452,9 +536,9 @@
         "weeklyCommits": 0,
         "latestCommit": {
           "sha": "3c359fe",
+          "url": "https://github.com/puddings-world/InvisibleGo/commit/3c359fe67e597dd813a68750236d0d0e1bae17e9",
           "message": "Make 3-illegal auto-skip a turn rotation, not a pass",
-          "date": "2026-05-08T16:53:28Z",
-          "url": "https://github.com/puddings-world/InvisibleGo/commit/3c359fe67e597dd813a68750236d0d0e1bae17e9"
+          "date": "2026-05-08T16:53:28Z"
         }
       },
       "pinned": 1
@@ -483,9 +567,9 @@
         "weeklyCommits": 0,
         "latestCommit": {
           "sha": "dcd54e8",
+          "url": "https://github.com/puddings-world/SADroid/commit/dcd54e8cff22665fbd5924a42fb472edcb61bb3c",
           "message": "Move ApkSmith submodule from droidbot/ to project root",
-          "date": "2026-05-01T16:10:26Z",
-          "url": "https://github.com/puddings-world/SADroid/commit/dcd54e8cff22665fbd5924a42fb472edcb61bb3c"
+          "date": "2026-05-01T16:10:26Z"
         }
       }
     },
@@ -513,9 +597,9 @@
         "weeklyCommits": 0,
         "latestCommit": {
           "sha": "50a7c97",
+          "url": "https://github.com/puddings-world/ApkSmith/commit/50a7c9770bcda8d042e2cd5ebef3043fcfa3ca3f",
           "message": "Fix all ruff lint errors + stabilise E2E test",
-          "date": "2026-04-22T14:48:52Z",
-          "url": "https://github.com/puddings-world/ApkSmith/commit/50a7c9770bcda8d042e2cd5ebef3043fcfa3ca3f"
+          "date": "2026-04-22T14:48:52Z"
         }
       },
       "pinned": 2
@@ -556,9 +640,9 @@
         "weeklyCommits": 0,
         "latestCommit": {
           "sha": "f8fdf8c",
+          "url": "https://github.com/puddingforhealth/FlowFusionBP/commit/f8fdf8c684ace37c65555cc9f58ce7a250fc82c5",
           "message": "Update README.md",
-          "date": "2025-03-25T12:53:08Z",
-          "url": "https://github.com/puddingforhealth/FlowFusionBP/commit/f8fdf8c684ace37c65555cc9f58ce7a250fc82c5"
+          "date": "2025-03-25T12:53:08Z"
         }
       }
     },
@@ -593,9 +677,9 @@
         "weeklyCommits": 0,
         "latestCommit": {
           "sha": "966e706",
+          "url": "https://github.com/puddingforhealth/EPG-LatentFlow/commit/966e7068ce9a60e95ae0acaf06a27efda71f5f5f",
           "message": "Merge branch 'main' of https://github.com/jamesforhealth/EPG_data_analyzer",
-          "date": "2025-03-25T10:19:56Z",
-          "url": "https://github.com/puddingforhealth/EPG-LatentFlow/commit/966e7068ce9a60e95ae0acaf06a27efda71f5f5f"
+          "date": "2025-03-25T10:19:56Z"
         }
       }
     },
@@ -630,9 +714,9 @@
         "weeklyCommits": 0,
         "latestCommit": {
           "sha": "d844325",
+          "url": "https://github.com/puddingforhealth/PPG-PulseFlowBP/commit/d844325bbabbbca03832ef788644e7d750b171cc",
           "message": "Remove .png and .pth files from repository tracking",
-          "date": "2025-03-25T12:36:26Z",
-          "url": "https://github.com/puddingforhealth/PPG-PulseFlowBP/commit/d844325bbabbbca03832ef788644e7d750b171cc"
+          "date": "2025-03-25T12:36:26Z"
         }
       }
     },
@@ -659,9 +743,9 @@
         "weeklyCommits": 2,
         "latestCommit": {
           "sha": "f262926",
+          "url": "https://github.com/puddingforhealth/SurgeryOCR/commit/f2629269edd5e875021a7b6ccc712cbd83a863b0",
           "message": "Exercise Vent exclusion in CI with a generated instrument panel",
-          "date": "2026-11-18T18:36:03Z",
-          "url": "https://github.com/puddingforhealth/SurgeryOCR/commit/f2629269edd5e875021a7b6ccc712cbd83a863b0"
+          "date": "2026-11-18T18:36:03Z"
         }
       }
     },
@@ -687,10 +771,11 @@
         "pushedAt": "2024-03-09T09:12:07Z",
         "weeklyCommits": 0,
         "latestCommit": {
-          "sha": "ee86cbc",
-          "message": "Fix compile issure #1",
-          "date": "2023-01-19T08:22:01Z",
-          "url": "https://github.com/JaggerYu928/SofaTearing/commit/ee86cbc49b8c29ba60ada1e7ea82ff4664fedce5"
+          "sha": "f2a5989",
+          "url": "https://github.com/JaggerYu928/SofaTearing/commit/f2a59891124718af13acfb29e7ee8d9f5d6ad8db",
+          "message": "Refactor the code to be compatible with Sofa v23.06",
+          "date": "2024-03-09T09:11:49Z",
+          "branch": "v23.06"
         }
       }
     },
@@ -717,9 +802,9 @@
         "weeklyCommits": 0,
         "latestCommit": {
           "sha": "ee71fdb",
+          "url": "https://github.com/jaggerturkey/CatAR_homepage/commit/ee71fdb5606754ee59b766f815e9b8948b44e7fc",
           "message": "Temp : Upload & Analysis video API function works",
-          "date": "2026-01-22T09:47:27Z",
-          "url": "https://github.com/jaggerturkey/CatAR_homepage/commit/ee71fdb5606754ee59b766f815e9b8948b44e7fc"
+          "date": "2026-01-22T09:47:27Z"
         }
       }
     }
