@@ -43,6 +43,10 @@ export type Manifest = {
   order?: number;
   /** Public roadmap, oldest step first. Shown even when the repo is private. */
   progress?: Milestone[];
+  /** This project is the centre of the world map on /projects. */
+  core?: boolean;
+  /** Slugs of the projects this one really works with: drawn as links on the world map. */
+  connects?: string[];
 };
 
 export type Activity = {
@@ -86,6 +90,8 @@ export type Project = {
   /** Position among the repos pinned on the GitHub profile, 0 first. */
   pinned?: number;
   progress?: Milestone[];
+  core?: boolean;
+  connects?: string[];
   activity?: Activity;
   error?: string;
 };

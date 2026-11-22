@@ -5,6 +5,10 @@
 // - `note`: one or two sentences. Wrap the one or two phrases a skimming
 //   reader should catch in `**double asterisks**`; nothing else is parsed.
 // - `href`: only public GitHub repos or pages already on this site.
+// - `projects`: slugs from data/projects.json that the item is about (for
+//   example ["paperfact"] or ["kaikou-claude", "clip-claude"]). The world map
+//   on /projects lights those nodes up with this note; leave it out when the
+//   item is about nothing listed there.
 // - `image`: optional screenshot under public/now/, 16:9, 1280×720, kept
 //   under ~150 KB (it is served as-is, bypassing the image optimizer, which
 //   hung on a UI screenshot). Cards without one get a monogram tile instead.
@@ -14,6 +18,7 @@ export type NowItem = {
   note: string;
   href?: string;
   image?: string;
+  projects?: string[];
 };
 
 export const now = {
@@ -21,36 +26,43 @@ export const now = {
   items: [
     {
       title: "Paperfact",
+      projects: ["paperfact"],
       note: "I'm building **Paperfact, a desktop reader that turns any paper into a guided reading session**: AI commentary paragraph by paragraph, a citation map of what a paper builds on and what built on it, and a reading queue across venues. This week it learned proper math and diagram typesetting, a keyboard-first list view, exportable reading-list bundles, a macOS build, and a round that **drafts a presentation-ready slide deck from a close reading**.",
       image: "/now/paperfact.jpg",
     },
     {
       title: "Mapetite",
+      projects: ["mapetite"],
       note: "I'm building a **browser extension that curates food places on top of Google Maps**. Saved places now **sync both ways with Google lists** in near real time, candidates are filtered down to actual food, and the first review and visit-tracking cards just landed.",
       image: "/now/mapetite.jpg",
     },
     {
       title: "Agent CLI companions",
+      projects: ["kaikou-claude", "clip-claude", "listen-claude"],
       note: "I'm building **three small companions for terminal coding agents, Claude Code, Codex and Gemini CLI alike**: Kaikou for Chinese voice input, Clip for pasting screenshots where the CLI has no image paste, Listen for spoken replies in my own voice. This week Kaikou cut idle CPU use, picked up automatic mic selection, Simplified-to-Traditional conversion and model warm-up, and gained a **bench comparing Whisper, Breeze, Qwen3 and FireRed** on my own recordings; Clip finished an audit pass (clipboard never left open, no console flashes, cheaper idle polling); Listen's speech server stopped popping windows, with readback paused until it stays quiet.",
       href: "/projects/kaikou-claude",
     },
     {
       title: "Assistant Hub",
+      projects: ["assistant-hub"],
       note: "I'm building a **personal command centre**: a task ledger, routines, widgets, a phone view and a desktop sidebar. This week it gained **automatic triage of phone captures**, a listening player for lecture series, and a weekly watcher for campus talks.",
       image: "/now/assistant-hub.jpg",
     },
     {
       title: "Street KTV & Mandopop pipeline",
+      projects: ["streetperformermaster", "mandpopdatapipeline", "reprise-studio"],
       note: "I'm running a **music line from dataset to stage**: MandpopDataPipeline turns Mandarin pop into separated stems and time-aligned lyrics, Reprise Studio renders those into abstract lyric videos, and Street KTV is the gig-side app, a **performer app on Android with a live audience songbook on this site** where listeners scan a QR code and queue songs.",
       href: "/playground/street-ktv-menu",
       image: "/now/street-ktv.png",
     },
     {
       title: "Virtual Embryo Challenge",
+      projects: ["virtual-embryo-challenge"],
       note: "I'm competing in the **Virtual Embryo Challenge at NeurIPS 2026**. This week's tooling covers pseudobulk-shift baselines, in-silico knockouts, delta and recompose steps for hypothesis building, and **submissions straight through the challenge API**, with the final deadline in early December.",
     },
     {
       title: "Cataract surgery video analysis",
+      projects: ["cataract-vision-lab"],
       note: "I'm starting a **research line on cataract surgery video**. The first study is now scoped around **capsulorhexis tracking and surgical-skill assessment**, building on a published benchmark.",
     },
     {

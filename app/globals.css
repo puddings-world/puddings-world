@@ -318,9 +318,79 @@ body {
   }
 }
 
+/* ---------- World map (/projects) ---------- */
+.world-label {
+  font-size: 22px;
+  fill: var(--color-ink-secondary);
+  transition: fill var(--dur-fast) var(--ease-out);
+}
+.world-label-core {
+  font-size: 30px;
+  font-weight: 600;
+  fill: var(--color-ink-primary);
+}
+.world-region {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 17px;
+  letter-spacing: 0.2em;
+}
+.world-node-link:hover .world-label,
+.world-node-link:focus-visible .world-label {
+  fill: var(--color-ink-primary);
+}
+.world-node-link:focus-visible {
+  outline: none;
+}
+.world-node-link:focus-visible .world-node > circle:last-of-type {
+  stroke: var(--color-ink-primary);
+  stroke-width: 3;
+}
+.world-node {
+  transition: opacity var(--dur-base) var(--ease-out);
+  animation: world-in var(--dur-slow) var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 35ms);
+}
+@keyframes world-in {
+  from {
+    opacity: 0;
+  }
+}
+.world-edge {
+  stroke-dasharray: 1;
+  animation: world-draw 1.2s var(--ease-out) 0.4s both;
+  transition:
+    stroke-opacity var(--dur-base) var(--ease-out),
+    stroke-width var(--dur-base) var(--ease-out);
+}
+@keyframes world-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+.world-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: world-pulse 2.8s var(--ease-out) infinite;
+}
+@keyframes world-pulse {
+  from {
+    transform: scale(0.8);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .enter > *,
   .reveal {
+    animation: none;
+  }
+  .world-node,
+  .world-edge,
+  .world-pulse {
     animation: none;
   }
   .lift:hover,

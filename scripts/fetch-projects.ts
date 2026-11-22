@@ -8,6 +8,7 @@ import { dirname, join } from "node:path";
 import { externalProjects } from "../content/external-projects";
 import { branchActivity, branchesToRead, type BranchLog } from "../lib/activity";
 import { MARKER_TOPIC } from "../lib/digest";
+import { normalizeConnects } from "../lib/world";
 import { normalizeProgress } from "../lib/progress";
 import { applyPins } from "../lib/projects";
 import type {
@@ -289,6 +290,8 @@ async function buildProject(repo: RepoResponse, manifest: Manifest): Promise<Pro
     featured: manifest.featured ?? false,
     order: manifest.order,
     progress: normalizeProgress(manifest.progress),
+    core: manifest.core === true || undefined,
+    connects: normalizeConnects(manifest.connects),
   };
   try {
     const [activity, citation] = await Promise.all([

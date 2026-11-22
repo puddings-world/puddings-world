@@ -41,6 +41,7 @@ DOCKER=1 ./scripts/deploy.sh       # Docker → Cloud Run / Fly.io
 - `lib/inbox/` — read-only view of what the owner's apps sent to pudding-backend (`/admin/inbox`)
 - `scripts/fetch-projects.ts` — the generator; `lib/activity.ts` — activity across branches
 - `scripts/weekly-digest.ts`, `lib/digest.ts` — weekly /projects digest to Assistant Hub
+- `lib/world.ts`, `components/WorldMap.tsx` — the world map at the top of `/projects`
 - `Dockerfile` — multi-stage build for self-host
 
 ## Design system: layout and motion
@@ -84,6 +85,9 @@ assistant hub, merged via PR). Each item has a `title`, a `note` in which
 get a monogram tile. Cards with an image are listed first (`lib/now.ts`),
 otherwise in file order. The first four render open; the rest sit behind a
 native `<details>` toggle.
+
+An item's optional `projects` lists the `/projects` slugs it is about; the
+world map (below) attaches the note to those nodes.
 
 ## Contact form
 
@@ -334,7 +338,7 @@ uploader shared by browser and CLI, `r2.ts` S3 signing via `aws4fetch`,
 4. Reads an optional `.puddings.json` at the repo root (schema: `Manifest` in
    `lib/types.ts`) that overrides any derived field — title, tagline, long
    description, track, status, hero image, links, `featured`, `hidden`,
-   `order`, `progress`.
+   `order`, `progress`, and for the world map `core` and `connects`.
 5. Reads `CITATION.cff` if present and renders it as the project's paper.
 6. Attaches stars, open issues, weekly commits, latest commit and release.
    Activity spans every branch (up to 30, default first; `branchActivity` in
@@ -356,6 +360,26 @@ on the next weekly refresh. Remaining GitHub topics become
 the card's tags. Private repos are shown
 without a link. Manifest text is published verbatim, so write it as public
 copy even on private repos.
+
+### World map
+
+The top of `/projects` draws every project as one world
+(`components/WorldMap.tsx`, layout in `lib/world.ts`): the project whose
+manifest sets `"core": true` sits in the middle, the tracks form sectors
+around it (Tools & agents, Research, Side worlds; archived projects are left
+off), and lines join projects that really work together, from manifest
+`"connects": ["slug", ...]` and internal `/projects/<slug>` links. An amber
+ring marks a project moving this week (commits in the last 7 days on any
+branch, or a push). Pointing at or tabbing to a node shows its tagline, the
+weekly note that names it (`content/now.ts` `projects`) and what it links
+to; without a focus the panel lists the latest weekly summary. On phones the
+labels give way to a per-region list of project chips under the map.
+
+The layout is computed at build time: radial sectors sized by project count,
+active projects first, alternating between two rings, then a pass that
+pushes overlapping labels apart (`separateLabels`, tested to leave no
+overlap). It needs no manual upkeep: a new tagged repo appears in its sector
+on the next weekly refresh.
 
 `progress` is a public roadmap, shown even for private repos: a list of
 `{ "title": "...", "status": "done" | "doing" | "next", "note"?: "..." }`,
