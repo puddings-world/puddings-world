@@ -22,7 +22,7 @@ export type NowItem = {
 };
 
 export const now = {
-  updated: "2026-11-22",
+  updated: "2026-11-23",
   items: [
     {
       title: "Paperfact",
